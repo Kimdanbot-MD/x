@@ -1,28 +1,70 @@
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br><br>
-## 𝐕𝐈𝐒𝐈𝐓𝐀𝐒 🔍
-<p align="center"><img src="https://profile-counter.glitch.me/{ERLANRAMAT}/count.svg" alt="neoxr :: Visitor's Count" /></p>
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br><br>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KimdanBot-MD: ¡Tu aliado en WhatsApp!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>KimdanBot-MD</h1>
+        <p>¡Tu aliado en WhatsApp!</p>
+    </header>
 
-### `𝐃𝐔𝐃𝐀𝐒 𝐒𝐎𝐁𝐑𝐄 𝐄𝐋 𝐁𝐎𝐓?, 𝐂𝐎𝐍𝐓𝐀𝐂𝐓𝐀𝐌𝐄`
-<a href="https://wa.me/5"><img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
- 
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br><br>
- ### 𝐄𝐃𝐈𝐓𝐎𝐑 𝐘 𝐏𝐑𝐎𝐏𝐈𝐄𝐓𝐀𝐑𝐈𝐎 𝐃𝐄𝐋 𝐁𝐎𝐓
-<a href="https://github.com/Kimdanbot-MD"><img src="https://github.com/Kimdanbot-MD.png?width=280" height="280" alt="Kim"/></a>
+    <main>
+        <section id="descripcion">
+            <h2>¿Qué es KimdanBot-MD?</h2>
+            <p>KimdanBot-MD es un chatbot de código abierto para WhatsApp desarrollado con Python y la librería **WhatsApp Web Client**. Su objetivo es brindar una experiencia conversacional automatizada y eficiente para usuarios de WhatsApp, permitiendo automatizar tareas, interactuar de forma dinámica y ofrecer información útil.</p>
+        </section>
 
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br><br>
+        <section id="funcionalidades">
+            <h2>¿Qué puede hacer KimdanBot-MD?</h2>
+            <ul>
+                <li>Responder preguntas frecuentes de forma automática.</li>
+                <li>Brindar información actualizada sobre diversos temas.</li>
+                <li>Realizar tareas como configurar alarmas, enviar recordatorios y gestionar listas de tareas.</li>
+                <li>Ofrecer entretenimiento con juegos, chistes y memes.</li>
+                <li>Integrarse con otras herramientas y servicios web.</li>
+                <li>¡Y mucho más!</li>
+            </ul>
+        </section>
 
-#### 𝐂𝐎𝐋𝐀𝐁𝐎𝐑𝐀𝐃𝐎𝐑𝐄𝐒 𝐃𝐄 𝐁𝐎𝐓
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tr>
-    <td align="center"><a href="https://github.com/elrebelde21"><img src="https://github.com/elrebelde21.png?size=100" width="100px;" alt=""/><br /><sub><b>Mario</b></sub></a><br /><sub><i>Desarollador Oficial</i></sub></td>
-    <td align="center"><a href="https://github.com/AzamiJs"><img src="https://github.com/azamijs.png? size=100" width="100px;" alt=""/><br /><sub> <b>Azami</b></sub></a><br /><sub><i>Desarollador Oficial</i></sub></td>
-    
+        <section id="demo">
+            <h2>¡KimdanBot-MD en acción!</h2>
+            </section>
 
+        <section id="agregar">
+            <h2>¡Anímate a probarlo!</h2>
+            <p>Escanea el siguiente código QR para agregar a KimdanBot-MD a tus contactos de WhatsApp:</p>
+            <p>O bien, agrégalo directamente a tu WhatsApp usando este enlace:</p>
+            <a href="https://faq.whatsapp.com/5472030609512325/?locale=es_LA&cms_platform=kaios">https://faq.whatsapp.com/5472030609512325/?locale=es_LA&cms_platform=kaios</a>
+        </section>
 
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
+        <section id="redes-sociales">
+            <h2>Redes sociales</h2>
+            <ul>
+                <li><a href="https://m.facebook.com/HarvardDentalMedicine/photos/commencement-exercises-have-begun-at-harvard-today-several-members-of-the-hsdm-c/10156787940394017/">Facebook</a></li>
+                <li><a href="https://twitter.com/dopeboyy22">Twitter</a></li>
+                <li><a href="https://www.instagram.com/drkimderamo/reel/C7m4Gf8yIOI/">Instagram</a></li>
+            </ul>
+        </section>
 
-<!-- ALL-CONTRIBUTORS-LIST:END -->
+        <section id="colaboradores">
+            <h2>¡Conoce a nuestros colaboradores!</h2>
+            <p>En el desarrollo de KimdanBot-MD han participado talentosos individuos que han aportado su tiempo, conocimiento y pasión para hacer de este proyecto una realidad. Agradecemos profundamente a:</p>
+            <ul>
+                <li>[Nombre del colaborador 1] - [Descripción del rol y aporte]</li>
+                <li>[Nombre del colaborador 2] - [Descripción del rol y aporte]</li>
+                <li>[Nombre del colaborador 3] - [Descripción del rol y aporte]</li>
+            </ul>
+        </section>
+
+        <section id="agradecimientos">
+            <h2>¡Agradecimientos especiales a:**</h2>
+            <p>A toda la comunidad de desarrolladores y usuarios que han brindado su apoyo y feedback durante el desarrollo de KimdanBot-MD. ¡Su colaboración es invaluable!</p>
+        </section>
+
+        <section id="comunidad">
+            <h2>¡Únete a la comunidad KimdanBot-MD!</h2>
+            <p>Te invitamos a formar parte de la comunidad KimdanBot-MD. Comparte tus ideas, sugerencias y reportes de errores. ¡Tu participación es importante para seguir
