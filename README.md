@@ -32,32 +32,47 @@
 
         <section id="demo">
             <h2>¡KimdanBot-MD en acción!</h2>
-            </section>
+            <div class="demo-container">
+                <img src="placeholder.jpg" alt="KimdanBot-MD en acción">
+
+                <p>**[Descripción de la funcionalidad demostrada]**</p>
+            </div>
+        </section>
 
         <section id="agregar">
             <h2>¡Anímate a probarlo!</h2>
-            <p>Escanea el siguiente código QR para agregar a KimdanBot-MD a tus contactos de WhatsApp:</p>
-            <p>O bien, agrégalo directamente a tu WhatsApp usando este enlace:</p>
-            <a href="https://faq.whatsapp.com/5472030609512325/?locale=es_LA&cms_platform=kaios">https://faq.whatsapp.com/5472030609512325/?locale=es_LA&cms_platform=kaios</a>
+            <div class="agregar-container">
+                <h3>Escanea el código QR para agregar a KimdanBot-MD a tus contactos de WhatsApp:</h3>
+                <img src="qr-code.png" alt="Código QR de KimdanBot-MD">
+
+                <h3>O bien, agrégalo directamente a tu WhatsApp usando este enlace:</h3>
+                <a href="https://wa.me/573123456789">¡Agregar KimdanBot-MD!</a>
+            </div>
         </section>
 
         <section id="redes-sociales">
             <h2>Redes sociales</h2>
-            <ul>
-                <li><a href="https://m.facebook.com/HarvardDentalMedicine/photos/commencement-exercises-have-begun-at-harvard-today-several-members-of-the-hsdm-c/10156787940394017/">Facebook</a></li>
-                <li><a href="https://twitter.com/dopeboyy22">Twitter</a></li>
-                <li><a href="https://www.instagram.com/drkimderamo/reel/C7m4Gf8yIOI/">Instagram</a></li>
+            <ul class="redes-sociales-list">
+                <li><a href="https://www.facebook.com/kymdanamerica/"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                <li><a href="https://twitter.com/kimdanbotmd"><i class="fab fa-twitter"></i> Twitter</a></li>
+                <li><a href="https://www.instagram.com/kimdanbotmd/"><i class="fab fa-instagram"></i> Instagram</a></li>
             </ul>
         </section>
 
         <section id="colaboradores">
             <h2>¡Conoce a nuestros colaboradores!</h2>
-            <p>En el desarrollo de KimdanBot-MD han participado talentosos individuos que han aportado su tiempo, conocimiento y pasión para hacer de este proyecto una realidad. Agradecemos profundamente a:</p>
-            <ul>
-                <li>[Nombre del colaborador 1] - [Descripción del rol y aporte]</li>
-                <li>[Nombre del colaborador 2] - [Descripción del rol y aporte]</li>
-                <li>[Nombre del colaborador 3] - [Descripción del rol y aporte]</li>
-            </ul>
+            <div class="colaboradores-container">
+                <div class="colaborador">
+                    <h3>[Nombre del colaborador 1]</h3>
+                    <p>[Descripción del rol y aporte]</p>
+                </div>
+
+                <div class="colaborador">
+                    <h3>[Nombre del colaborador 2]</h3>
+                    <p>[Descripción del rol y aporte]</p>
+                </div>
+
+                </div>
         </section>
 
         <section id="agradecimientos">
@@ -67,4 +82,5 @@
 
         <section id="comunidad">
             <h2>¡Únete a la comunidad KimdanBot-MD!</h2>
-            <p>Te invitamos a formar parte de la comunidad KimdanBot-MD. Comparte tus ideas, sugerencias y reportes de errores. ¡Tu participación es importante para seguir
+            <div class="comunidad-container">
+                <p>Te invitamos a formar parte de la comunidad Kim
