@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "a whatsapp bot",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "node test.js"
   },
@@ -21,5 +22,11 @@
   "bugs": {
     "url": "https://github.com/Kimdanbot-MD/KimDanBot-MD/issues"
   },
-  "homepage": "https://github.com/Kimdanbot-MD/KimDanBot-MD#readme"
+  "homepage": "https://github.com/Kimdanbot-MD/KimDanBot-MD#readme",
+  "dependencies": {
+    "@hapi/boom": "^10.0.1",
+    "@whiskeysockets/baileys": "^6.7.5",
+    "pino": "^9.2.0",
+    "qrcode-terminal": "^0.12.0"
+  }
 }
