@@ -2,7 +2,8 @@ import { DisconnectReason, phoneNumber, makeWASocket, makeInMemoryStore, useMult
 import { Boom } from "@hapi/boom";
 import pino from "pino";
 import chalk from 'chalk'
-import { parsePhoneNumber } from "libphonenumber-js"
+import baileys from "@whiskeysockets/baileys"
+const { phoneNumber} = baileys
 const methodCodeQR = process.argv.includes("qr")
 const pairingCode = !!phoneNumber || process.argv.includes("--pairing-code")
 const methodCode = !!phoneNumber || process.argv.includes("code")
