@@ -2,6 +2,7 @@ import { DisconnectReason, makeWASocket, makeInMemoryStore, useMultiFileAuthStat
 import { Boom } from "@hapi/boom";
 import pino from "pino";
 import chalk from 'chalk'
+import fs from 'fs'
 import baileys from "@whiskeysockets/baileys"
 const { phoneNumber} = baileys
 const methodCodeQR = process.argv.includes("qr")
