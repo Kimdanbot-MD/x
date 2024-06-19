@@ -1,9 +1,8 @@
-import { DisconnectReason, makeWASocket, makeInMemoryStore, useMultiFileAuthState, makeCacheableSignalKeyStore, Browsers } from "@whiskeysockets/baileys";
+import { baileys, DisconnectReason, makeWASocket, makeInMemoryStore, useMultiFileAuthState, makeCacheableSignalKeyStore, Browsers } from "@whiskeysockets/baileys";
 import { Boom } from "@hapi/boom";
 import pino from "pino";
 import chalk from "chalk";
 import fs from "fs";
-import baileys from "@whiskeysockets/baileys";
 import readline from "readline";
 const { phoneNumber} = baileys
 const methodCodeQR = process.argv.includes("qr")
