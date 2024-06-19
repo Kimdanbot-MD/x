@@ -131,7 +131,7 @@ const pollUpdate = await getAggregateVotesInPollMessage({message: pollCreation, 
 var toCmd = pollUpdate.filter(v => v.voters.length !== 0)[0]?.name
 if (toCmd == undefined) return
 var prefCmd = prefix+toCmd
-sock.appenTextMessage(prefCmd, chatUpdate)
+kim.appenTextMessage(prefCmd, chatUpdate)
 }}}})
     store?.bind(kim.ev);
     
