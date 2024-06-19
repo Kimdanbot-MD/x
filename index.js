@@ -134,17 +134,37 @@ var prefCmd = prefix+toCmd
 kim.appenTextMessage(prefCmd, chatUpdate)
 }}}})
     store?.bind(kim.ev);
-    
-    kim.ev.on("creds.update", saveCreds)
-    kim.ev.on("connection.update", async({ connection, lastDisconnect}) => {
-        if (connection == "close") {
+	
+	kim.ev.on("creds.update", saveCreds)
+	
+    kim.ev.on('connection.update', async (update) => {
+const { connection, lastDisconnect, qr, receivedPendingNotifications, isNewLogin} = update;
+console.log(receivedPendingNotifications)
+if (isNewLogin) sock.isInit = true
+if (connection == 'connecting') {
+console.log('iniciando...')
+say('KimdanBot-MD', {
+  font: 'chrome',
+  align: 'center',
+  gradient: ['red', 'magenta']});
+say(`BOT EN DESARROLLO`, {
+  font: 'console',
+  align: 'center',
+  gradient: ['red', 'magenta']});
+	
+    } else if (connection == "close") {
             let reason = new Boom(lastDisconnect?.error)?.output?.statuscode
             if (reason == DisconnectReason.connectionClose) { 
                 console.log(`Se cerro la conexion conectando de nuevo`);
                 start();
             }
-        }
-        if (connection == "open") {
+        } else if (opcion == '1' || methodCodeQR && qr !== undefined) {
+if (opcion == '1' || methodCodeQR) {
+console.log(color('[SYS]', '#009FFF'),
+color(moment().format('DD/MM/YY HH:mm:ss'), '#A1FFCE'),
+color(`\nescanea el codigo qr`, '#f12711'))
+}
+        } else if (connection == "open") {
 			console.log(`Kim es online.`);
 		};
     })
