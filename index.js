@@ -18,6 +18,7 @@ const start = async() => {
     
     store?.bind(kim.ev);
     
+    kim.ev.on("creds.update", saveCreds)
     kim.ev.on("connection.update", async({ connection, lastDisconnect}) => {
         if (connection == "close") {
             let reason = new Boom(lastDisconnect?.error)?.output?.statuscode
