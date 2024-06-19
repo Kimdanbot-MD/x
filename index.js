@@ -2,7 +2,7 @@ import { DisconnectReason, makeWASocket, makeInMemoryStore, useMultiFileAuthStat
 import { Boom } from "@hapi/boom";
 import pino from "pino";
 import chalk from 'chalk'
-import { parsePhoneNumber } = from "libphonenumber-js"
+import { parsePhoneNumber } from "libphonenumber-js"
 import methodCodeQR from process.argv.includes("qr")
 import pairingCode from !!phoneNumber || process.argv.includes("--pairing-code")
 import methodCode from !!phoneNumber || process.argv.includes("code")
