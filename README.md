@@ -2,8 +2,7 @@
 
 # KimdanBot-MD
 ## ¡Tu aliado en WhatsApp!
-    </header>
-    <main>
+   <main>
         <section id="descripcion">
             <h2>¿Qué es KimdanBot-MD?</h2>
             <p>KimdanBot-MD es un chatbot de código abierto para WhatsApp desarrollado con Python y la librería **WhatsApp Web Client**. Su objetivo es brindar una experiencia conversacional automatizada y eficiente para usuarios de WhatsApp, permitiendo automatizar tareas, interactuar de forma dinámica y ofrecer información útil.</p>
