@@ -3,11 +3,12 @@ import { Boom } from "@hapi/boom";
 import pino from "pino";
 import chalk from 'chalk'
 import { parsePhoneNumber } from "libphonenumber-js"
-import methodCodeQR from process.argv.includes("qr")
-import pairingCode from !!phoneNumber || process.argv.includes("--pairing-code")
-import methodCode from !!phoneNumber || process.argv.includes("code")
-import useMobile from process.argv.includes("--mobile")
-import MethodMobile from process.argv.includes("mobile")
+const methodCodeQR = process.argv.includes("qr")
+const pairingCode = !!phoneNumber || process.argv.includes("--pairing-code")
+const methodCode = !!phoneNumber || process.argv.includes("code")
+const useMobile = process.argv.includes("--mobile")
+const MethodMobile = process.argv.includes("mobile")
+const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
 
 const { state, saveCreds } = await useMultiFileAuthState('auth');
 const store = makeInMemoryStore({ logger: pino().child({ level: "silent", stream: "store" }) })
