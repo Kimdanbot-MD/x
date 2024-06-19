@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KimdanBot-MD: ¡Tu aliado en WhatsApp!</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" 
 </head>
 <body>
     <header>
         <h1>KimdanBot-MD</h1>
         <p>¡Tu aliado en WhatsApp!</p>
     </header>
-
     <main>
         <section id="descripcion">
             <h2>¿Qué es KimdanBot-MD?</h2>
