@@ -140,7 +140,7 @@ kim.ev.on('creds.update', saveCreds)
 kim.ev.on('connection.update', async (update) => {
 const { connection, lastDisconnect, qr, isNewLogin } = update;
 
-if (isNewLogin) sock.isInit = true
+if (isNewLogin) kim.isInit = true
 if (connection == 'connecting') {
 console.log('iniciando...')
 
