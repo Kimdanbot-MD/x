@@ -1,5 +1,5 @@
 import "./settings.js"
-import { fetchLatestBaileysVersion, DisconnectReason, makeWASocket, makeInMemoryStore, useMultiFileAuthState, makeCacheableSignalKeyStore, Browsers } from "@whiskeysockets/baileys";
+import { PHONENUMBER_MCC, fetchLatestBaileysVersion, DisconnectReason, makeWASocket, makeInMemoryStore, useMultiFileAuthState, makeCacheableSignalKeyStore, Browsers } from "@whiskeysockets/baileys";
 import { Boom } from "@hapi/boom";
 import pino from "pino";
 import chalk from "chalk";
