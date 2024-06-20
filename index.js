@@ -4,7 +4,7 @@ import pino from "pino";
 import chalk from "chalk";
 import fs from "fs";
 import readline from "readline";
-import PhoneNumber = from 'awesome-phonenumber'
+import PhoneNumber from 'awesome-phonenumber'
 const methodCodeQR = process.argv.includes("qr")
 const pairingCode = !!phoneNumber || process.argv.includes("--pairing-code")
 const methodCode = !!phoneNumber || process.argv.includes("code")
