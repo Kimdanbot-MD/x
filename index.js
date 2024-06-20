@@ -1,5 +1,4 @@
-import "../settings.js"
-import "../imagenes.js"
+import "./settings.js"
 import { DisconnectReason, makeWASocket, makeInMemoryStore, useMultiFileAuthState, makeCacheableSignalKeyStore, Browsers } from "@whiskeysockets/baileys";
 import { Boom } from "@hapi/boom";
 import pino from "pino";
