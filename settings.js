@@ -1,7 +1,7 @@
-const chalk = require("chalk")
-const path = require('path')
-const fs = require("fs")
-const { en, es } = require('./libs/idiomas/total-idiomas.js') 
+import chalk from "chalk"
+import path from 'path'
+import fs from "fs"
+//const { en, es } = require('./libs/idiomas/total-idiomas.js') 
 
 global.owner = [
 ["573234628903", "creador", true],
@@ -24,7 +24,7 @@ global.aport = [
 
 // ═════════════𓊈『 IDIOMAS 』𓊉═════════════ 
 global.place = 'America/Bogota' // Aquí puede encontrar su ubicación https://momentjs.com/timezone/
-global.lenguaje = es // Aquí puede encontrar su idioma https://cloud.google.com/translate/docs/languages?hl=es-419
+//global.lenguaje = es // Aquí puede encontrar su idioma https://cloud.google.com/translate/docs/languages?hl=es-419
 global.prefix = [`.`]
 
 // ═════════════𓊈『 APIS 』𓊉═════════════ 
@@ -101,7 +101,7 @@ global.ca = [nna, nna2, nna3, nna4]
 global.wa = [nna, nna2, nna3, nna4, nn, nn2, nn3, nn4, nn5, nn6, nn7, nn8, nn9, nn10]
 
 // ═════════════𓊈『 GLOBAL 』𓊉════════════ 
-global.mess = {
+/*global.mess = {
 admin: `${lenguaje['admin']()}`, 
 botAdmin: `${lenguaje['botAdmin']()}`, 
 owner: `${lenguaje['propietario']()}`, 
@@ -125,7 +125,7 @@ waittt: `*. : ｡✿ * ﾟ * .: ｡ ✿ * ﾟ  * . : ｡ ✿ *. : ｡✿ * ﾟ 
 waitttt: `*. : ｡✿ * ﾟ * .: ｡ ✿ * ﾟ  * . : ｡ ✿ *. : ｡✿ * ﾟ * .: ｡*\n\n*_💐▷ ${lenguaje['carga']()}_* ████████▒▒ *(〃ﾟ3ﾟ〃)*\n              𝞋𝞎  ࿙⃛͜࿚⃛࿙⃛͜࿚⃛࿙⃛͜࿚⃛ ୨🌸୧ ࿙⃛͜࿚⃛࿙⃛͜࿚⃛࿙⃛͜࿚⃛ 𝞋𝞎 \n. ᘛ   °   🥞 𖣃' 𝕏̷̸.𝔽̷̸𝔸̷̸𝕍̷̸𝕆̷̸ℝ̷̸___ 𝔼̷̸𝕊̷̸ℙ̷̸𝔼̷̸ℝ̷̸𝔼̷̸ㅤ   °    Ꮚ`, 
 waittttt: `*. : ｡✿ * ﾟ * .: ｡ ✿ * ﾟ  * . : ｡ ✿ *. : ｡✿ * ﾟ * .: ｡*\n\n*_💐▷ ${lenguaje['carga']()}_* ██████████` + "*(人´∀`〃)*\n              𝞋𝞎  ࿙⃛͜࿚⃛࿙⃛͜࿚⃛࿙⃛͜࿚⃛ ୨🌸୧ ࿙⃛͜࿚⃛࿙⃛͜࿚⃛࿙⃛͜࿚⃛ 𝞋𝞎 \n. ᘛ   °   🥞 𖣃' 𝕏̷̸.𝔽̷̸𝔸̷̸𝕍̷̸𝕆̷̸ℝ̷̸___ 𝔼̷̸𝕊̷̸ℙ̷̸𝔼̷̸ℝ̷̸𝔼̷̸ㅤ   °    Ꮚ", 
 result: `${lenguaje['result']()}`
-}
+}*/
 
 // ═════════════𓊈『 REACCIONES 』𓊉═════════════ 
 global.rwait = '⌛'
