@@ -151,12 +151,3 @@ global.blockList = []
 // ═════════════𓊈『 NIVELES 』𓊉═════════════ 
 global.multiplier = 90 // Cuanto más alto, más difícil subir de nivel 
 global.maxwarn = '4' // máxima advertencias  
-
-let file = require.resolve(__filename)
-fs.watchFile(file, () => {
-fs.unwatchFile(file)
-const fileName = path.basename(file)
-console.log(chalk.redBright(`Update'${__filename}'`))
-delete require.cache[file]
-require(file)
-})
