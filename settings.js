@@ -1,16 +1,14 @@
 import chalk from "chalk"
 import path from 'path'
 import fs from "fs"
-//const { en, es } = require('./libs/idiomas/total-idiomas.js') 
+import { en, es } from './Kim/idiomas/total-idiomas.js'
 
 global.owner = [
 ["573234628903", "creador", true],
 ["573044062173"], 
 ["50685690440"],
-["50433086279"], 
 ["573148243189"],
 ["5214434703586", "Zam", true],
-["5217294888993"],
 ["51968374620", "Ale", true],
 ["522221496388", " suro", true]]
 
@@ -23,8 +21,8 @@ global.aport = [
 ]
 
 // ═════════════𓊈『 IDIOMAS 』𓊉═════════════ 
-global.place = 'America/Bogota' // Aquí puede encontrar su ubicación https://momentjs.com/timezone/
-//global.lenguaje = es // Aquí puede encontrar su idioma https://cloud.google.com/translate/docs/languages?hl=es-419
+global.place = 'America/Bogota' 
+global.lenguaje = es 
 global.prefix = [`.`]
 
 // ═════════════𓊈『 APIS 』𓊉═════════════ 
