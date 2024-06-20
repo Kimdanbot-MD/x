@@ -15,6 +15,7 @@ const rl = readline.createInterface({ input: process.stdin, output: process.stdo
 const question = (text) => new Promise((resolve) => rl.question(text, resolve))
 const msgRetry = (MessageRetryMap) => { }
 const msgRetryCounterCache = new NodeCache() //para mensaje de reintento, "mensaje en espera"   
+let { version, isLatest } = await fetchLatestBaileysVersion()
 
 const { state, saveCreds } = await useMultiFileAuthState('auth');
 const store = makeInMemoryStore({ logger: pino().child({ level: "silent", stream: "store" }) })
