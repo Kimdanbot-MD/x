@@ -6,6 +6,7 @@ import chalk from "chalk";
 import fs from "fs";
 import readline from "readline";
 import NodeCache from 'node-cache'
+import cfonts from 'cfonts'
 const methodCodeQR = process.argv.includes("qr")
 const pairingCode = !!phoneNumber || process.argv.includes("--pairing-code")
 const methodCode = !!phoneNumber || process.argv.includes("code")
@@ -16,6 +17,7 @@ const question = (text) => new Promise((resolve) => rl.question(text, resolve))
 const msgRetry = (MessageRetryMap) => { }
 const msgRetryCounterCache = new NodeCache() //para mensaje de reintento, "mensaje en espera"   
 let { version, isLatest } = await fetchLatestBaileysVersion()
+const {say} = cfonts;
 
 const { state, saveCreds } = await useMultiFileAuthState('auth');
 const store = makeInMemoryStore({ logger: pino().child({ level: "silent", stream: "store" }) })
