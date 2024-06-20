@@ -18,6 +18,9 @@ const msgRetry = (MessageRetryMap) => { }
 const msgRetryCounterCache = new NodeCache() //para mensaje de reintento, "mensaje en espera"   
 let { version, isLatest } = await fetchLatestBaileysVersion()
 const {say} = cfonts;
+const color = (text, color) => {
+return !color ? chalk.green(text) : color.startsWith('#') ? chalk.hex(color)(text) : chalk.keyword(color)(text)
+}
 
 const { state, saveCreds } = await useMultiFileAuthState('auth');
 const store = makeInMemoryStore({ logger: pino().child({ level: "silent", stream: "store" }) })
