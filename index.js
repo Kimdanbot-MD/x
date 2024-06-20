@@ -174,7 +174,6 @@ say(`BOT EN DESARROLLO`, {
         } else if (opcion == '1' || methodCodeQR && qr !== undefined) {
 if (opcion == '1' || methodCodeQR) {
 console.log(color('[SYS]', '#009FFF'),
-color(moment().format('DD/MM/YY HH:mm:ss'), '#A1FFCE'),
 color(`\nescanea el codigo qr`, '#f12711'))
 }
         } else if (connection == "open") {
