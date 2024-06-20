@@ -1,10 +1,10 @@
-import { baileys, DisconnectReason, makeWASocket, makeInMemoryStore, useMultiFileAuthState, makeCacheableSignalKeyStore, Browsers } from "@whiskeysockets/baileys";
+import { DisconnectReason, makeWASocket, makeInMemoryStore, useMultiFileAuthState, makeCacheableSignalKeyStore, Browsers } from "@whiskeysockets/baileys";
 import { Boom } from "@hapi/boom";
 import pino from "pino";
 import chalk from "chalk";
 import fs from "fs";
 import readline from "readline";
-const { phoneNumber} = baileys
+import PhoneNumber = from 'awesome-phonenumber'
 const methodCodeQR = process.argv.includes("qr")
 const pairingCode = !!phoneNumber || process.argv.includes("--pairing-code")
 const methodCode = !!phoneNumber || process.argv.includes("code")
