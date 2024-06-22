@@ -3,6 +3,7 @@ import { WaMessageStubType, areJidsSameUser, downloadContentFromMessage, generat
 import pino from "pino";
 import chalk from "chalk";
 import fs from "fs";const fetch = require('node-fetch')
+import fetch from 'node-fetch'
 
 const msgs = (message) => {   
 if (message.length >= 10) { 
