@@ -152,6 +152,6 @@ conn.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
 let e = String(err) 
 conn.sendMessage("573173090446@s.whatsapp.net", { text: "Hola Creador/desarrollador, parece haber un error, por favor arreglarlo 🥲\n\n" + util.format(e), 
 contextInfo:{forwardingScore: 9999999, isForwarded: false }})
-process.on('uncaughtException', function (err) {
+process.on('uncaughtException', async (err) => {
 console.log('Caught exception: ', err)})}}}}
  
