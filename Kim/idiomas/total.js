@@ -1,5 +1,4 @@
-const espanol = require('./es.js') //Español 
-const ingles = require('./en.js') //Ingles
+const es = require('./es.js') //Español 
+const en = require('./en.js') //Ingles
 
-module.exports.es = espanol
-module.exports.en = ingles
+module.exports = {es, en }
