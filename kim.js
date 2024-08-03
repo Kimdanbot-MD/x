@@ -99,7 +99,7 @@ const isQuotedDocument = type === 'extendedTextMessage' && content.includes('doc
 const isQuotedMsg = type === 'extendedTextMessage' && content.includes('Message') 
 const isViewOnce = (type === 'viewOnceMessage') 
 
-/*// ═════════════𓊈『 CONSOLA 』𓊉═════════════	
+// ═════════════𓊈『 CONSOLA 』𓊉═════════════	
 if (m.message) {
 console.log(chalk.bold.magenta(' ༺  🍓  𝐊𝐢𝐦𝐝𝐚𝐧𝐁𝐨𝐭-𝐌𝐃 🍓 ༻'), 
 chalk.bold.cyanBright(`\n┏━━━━━━━━━━━━━━━━━━━━━━━━┅┅\n┃🏷️  +${conn.user.id.split("@")[0]}`), 
@@ -108,7 +108,7 @@ chalk.bold.red(`${lenguaje.Bio.hora}`) + chalk.red(moment(t * 1000).tz(place).fo
 chalk.bold.magenta(`${lenguaje.Bio.usuario}`) + chalk.magenta(pushname) + '  ➜ ', gradient.rainbow(userSender), 
 m.isGroup ? chalk.bold.yellow(`${lenguaje.Bio.grupo}`) + chalk.yellow(groupName) + '  ❥ ': chalk.bold.yellow(`${lenguaje.Bio.priv}`), 
 chalk.bold.cyanBright('\n┃') + chalk.bold.white(`${lenguaje.Bio.mensaje}${msgs(m.text)}`) + chalk.bold.cyanBright(`\n┗━━━━━━━━━━━━━━━━━━━━━━━━┅┅\n`)
-)))}*/
+)))}
  
 switch (command) { 
   case 'test':
