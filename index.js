@@ -98,40 +98,43 @@ console.log(chalk.bold.white(chalk.bgMagenta(`(●'▽ '●)ゝ 🩷  ᥴ᥆ძ�
 }, 2000)
 }
 
+async function getMessage(key) {
+  if (store) {
+    const msg = await store.loadMessage(key.remoteJid, key.id);
+    return msg?.message }
+  return { conversation: '𝐊𝐢𝐦𝐃𝐚𝐧𝐁𝐨𝐭-𝐌𝐃' }}
+sock.ev.on('messages.upsert', async (chatUpdate) => {
+  try {
+    for (const mek of chatUpdate.messages) {
+      try {
+        mek = chatUpdate.messages[0];
+        if (!mek.message) continue;
+        mek.message = mek.message.ephemeralMessage?.message || mek.message;
+        if (mek.key && mek.key.remoteJid === 'status@broadcast') continue;
+        if (!sock.public && !mek.key.fromMe && chatUpdate.type === 'notify') continue;
+        if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) continue;
+        if (mek.key.id.startsWith('FatihArridho_')) continue;
 
-kim.ev.on('messages.upsert', async(v) => {
-try {
-let m = v.messages[v.messages.length - 1]
-if (!m.message) return
-m.message = (Object.keys(m.message)[0] === 'ephemeralMessage') ? m.message.ephemeralMessage.message : m.message
-// Every Return;
-if (v.type === 'notify' || v.key && v.key.remoteJid === 'status@broadcast') return
-if (!kim.public && !m.key.fromMe) return
-if (m.key.id.startsWith('BAE5') && m.key.id.length === 16 || m.key.id.startsWith('FatihArridho_')) return
+        global.numBot = kim.user.id.split(":")[0] + "@s.whatsapp.net";
+        global.numBot2 = sock.user.id;
 
-global.numBot = kim.user.id.split(":")[0] + "@s.whatsapp.net"
-global.numBot2 = kim.user.id
+        const m = smsg(sock, mek);
+        require("./kim")(sock, m, chatUpdate, mek, store);
+      } catch (e) {
+        console.error(e)}}
+  } catch (err) {
+    console.error(err)}});
 
-m = smsg(kim, m)
-require('./kim')(kim, m, v, m, store)
-} catch (e) {
-console.error(e)
-}
-})
-
-
-kim.ev.on('messages.update', async chatUpdate => {
-for (let { key, update } of chatUpdate) {
-if (update.pollUpdates && key.fromMe) {
-const pollCreation = await store.loadMessage(key.remoteJid, key.id);
-if (pollCreation.message) {
-const pollUpdate = await getAggregateVotesInPollMessage({message: pollCreation.message, pollUpdates: update.pollUpdates, })
-var toCmd = pollUpdate.filter(v => v.voters.length !== 0)[0]?.name
-if (toCmd == undefined) return
-var prefCmd = prefix + toCmd
-kim.appenTextMessage(prefCmd, chatUpdate)
-}}
-}})
+sock.ev.on('messages.update', async (chatUpdate) => {
+  for (const { key, update } of chatUpdate) {
+    if (update.pollUpdates && key.fromMe) {
+      const pollCreation = await getMessage(key);
+      if (pollCreation) {
+        const pollUpdate = await getAggregateVotesInPollMessage({ message: pollCreation, pollUpdates: update.pollUpdates });
+        const winningOption = pollUpdate.find(v => v.voters.length !== 0)?.name;
+        if (!winningOption) continue;
+        const command = prefix + winningOption;
+        sock.appenTextMessage(command, chatUpdate)}}}});
 
 store?.bind(kim.ev);
 	
