@@ -3,7 +3,6 @@ import path from 'path'
 import fs from "fs"
 import es from './Kim/idiomas/es.js' //Español 
 import en from './Kim/idiomas/en.js' //Ingles 
-const idiomas = {es, en};
 
 global.owner = [
 ["573234628903", "creador", true],
