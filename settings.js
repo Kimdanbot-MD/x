@@ -23,7 +23,7 @@ global.aport = [
 
 // ═════════════𓊈『 IDIOMAS 』𓊉═════════════ 
 global.place = 'America/Bogota' 
-global.lenguaje = 'es' 
+global.lenguaje = es 
 global.prefix = [`.`]
 
 // ═════════════𓊈『 APIS 』𓊉═════════════ 
