@@ -108,12 +108,12 @@ kim.ev.on('messages.upsert', async (chatUpdate) => {
     chatUpdate.messages.forEach(async (mek) => {
       try {
         mek = chatUpdate.messages[0];
-        if (!mek.message) continue;
+        if (!mek.message) return;
         mek.message = mek.message.ephemeralMessage?.message || mek.message;
-        if (mek.key && mek.key.remoteJid === 'status@broadcast') continue;
-        if (!kim.public && !mek.key.fromMe && chatUpdate.type === 'notify') continue;
-        if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) continue;
-        if (mek.key.id.startsWith('FatihArridho_')) continue;
+        if (mek.key && mek.key.remoteJid === 'status@broadcast') return;
+        if (!kim.public && !mek.key.fromMe && chatUpdate.type === 'notify') return;
+        if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) return;
+        if (mek.key.id.startsWith('FatihArridho_')) return;
 
         global.numBot = kim.user.id.split(":")[0] + "@s.whatsapp.net";
         global.numBot2 = kim.user.id;
@@ -132,7 +132,7 @@ kim.ev.on('messages.update', async (chatUpdate) => {
       if (pollCreation) {
         const pollUpdate = await getAggregateVotesInPollMessage({ message: pollCreation, pollUpdates: update.pollUpdates });
         const winningOption = pollUpdate.find(v => v.voters.length !== 0)?.name;
-        if (!winningOption) continue;
+        if (!winningOption) return;
         const command = prefix + winningOption;
         kim.appenTextMessage(command, chatUpdate)}}}});
 
