@@ -1,8 +1,8 @@
 import chalk from "chalk"
 import path from 'path'
 import fs from "fs"
-const es = require('./Kim/idiomas/es.js') //Español 
-const en = require('./Kim/idiomas/en.js') //Ingles 
+const es = require('./Kim/idiomas/es') //Español 
+const en = require('./Kim/idiomas/en') //Ingles 
 
 global.owner = [
 ["573234628903", "creador", true],
