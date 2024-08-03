@@ -1,8 +1,9 @@
 import chalk from "chalk"
 import path from 'path'
 import fs from "fs"
-import es from './Kim/idiomas/total.js' //Español 
-//import en from './Kim/idiomas/total.js' //Ingles 
+import es from './Kim/idiomas/es.js' //Español 
+import en from './Kim/idiomas/en.js' //Ingles 
+const idiomas = {es, en};
 
 global.owner = [
 ["573234628903", "creador", true],
@@ -23,7 +24,7 @@ global.aport = [
 
 // ═════════════𓊈『 IDIOMAS 』𓊉═════════════ 
 global.place = 'America/Bogota' 
-global.lenguaje = es 
+global.lenguaje = 'es' 
 global.prefix = [`.`]
 
 // ═════════════𓊈『 APIS 』𓊉═════════════ 
