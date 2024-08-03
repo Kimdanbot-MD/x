@@ -105,7 +105,7 @@ async function getMessage(key) {
   return { conversation: '𝐊𝐢𝐦𝐃𝐚𝐧𝐁𝐨𝐭-𝐌𝐃' }}
 kim.ev.on('messages.upsert', async (chatUpdate) => {
   try {
-    for (const mek of chatUpdate.messages) {
+    chatUpdate.messages.forEach(async (mek) => {
       try {
         mek = chatUpdate.messages[0];
         if (!mek.message) continue;
