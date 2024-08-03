@@ -119,11 +119,9 @@ kim.ev.on('messages.upsert', async (chatUpdate) => {
         const m = smsg(kim, mek);
         require("./kim")(kim, m, chatUpdate, mek, store);
       } catch (e) {
-        console.error(e)
-      }}
+        console.error(e)}}) 
       } catch (err) {
-    console.error(err)
-  }});
+    console.error(err)}});
 
 kim.ev.on('messages.update', async (chatUpdate) => {
   for (const { key, update } of chatUpdate) {
