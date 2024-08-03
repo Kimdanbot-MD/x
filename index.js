@@ -120,7 +120,8 @@ kim.ev.on('messages.upsert', async (chatUpdate) => {
         require("./kim")(kim, m, chatUpdate, mek, store);
       } catch (e) {
         console.error(e)
-      }}} catch (err) {
+      }}
+      } catch (err) {
     console.error(err)
   }});
 
