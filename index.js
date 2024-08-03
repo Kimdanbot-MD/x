@@ -114,16 +114,15 @@ kim.ev.on('messages.upsert', async (chatUpdate) => {
         if (!kim.public && !mek.key.fromMe && chatUpdate.type === 'notify') return;
         if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) return;
         if (mek.key.id.startsWith('FatihArridho_')) return;
-
         global.numBot = kim.user.id.split(":")[0] + "@s.whatsapp.net";
         global.numBot2 = kim.user.id;
-
         const m = smsg(kim, mek);
         require("./kim")(kim, m, chatUpdate, mek, store);
       } catch (e) {
-        console.error(e)}}
-  } catch (err) {
-    console.error(err)}});
+        console.error(e)
+      }}} catch (err) {
+    console.error(err)
+  }});
 
 kim.ev.on('messages.update', async (chatUpdate) => {
   for (const { key, update } of chatUpdate) {
