@@ -103,7 +103,7 @@ async function getMessage(key) {
     const msg = await store.loadMessage(key.remoteJid, key.id);
     return msg?.message }
   return { conversation: '𝐊𝐢𝐦𝐃𝐚𝐧𝐁𝐨𝐭-𝐌𝐃' }}
-sock.ev.on('messages.upsert', async (chatUpdate) => {
+kim.ev.on('messages.upsert', async (chatUpdate) => {
   try {
     for (const mek of chatUpdate.messages) {
       try {
@@ -111,21 +111,21 @@ sock.ev.on('messages.upsert', async (chatUpdate) => {
         if (!mek.message) continue;
         mek.message = mek.message.ephemeralMessage?.message || mek.message;
         if (mek.key && mek.key.remoteJid === 'status@broadcast') continue;
-        if (!sock.public && !mek.key.fromMe && chatUpdate.type === 'notify') continue;
+        if (!kim.public && !mek.key.fromMe && chatUpdate.type === 'notify') continue;
         if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) continue;
         if (mek.key.id.startsWith('FatihArridho_')) continue;
 
         global.numBot = kim.user.id.split(":")[0] + "@s.whatsapp.net";
-        global.numBot2 = sock.user.id;
+        global.numBot2 = kim.user.id;
 
-        const m = smsg(sock, mek);
-        require("./kim")(sock, m, chatUpdate, mek, store);
+        const m = smsg(kim, mek);
+        require("./kim")(kim, m, chatUpdate, mek, store);
       } catch (e) {
         console.error(e)}}
   } catch (err) {
     console.error(err)}});
 
-sock.ev.on('messages.update', async (chatUpdate) => {
+kim.ev.on('messages.update', async (chatUpdate) => {
   for (const { key, update } of chatUpdate) {
     if (update.pollUpdates && key.fromMe) {
       const pollCreation = await getMessage(key);
@@ -134,7 +134,7 @@ sock.ev.on('messages.update', async (chatUpdate) => {
         const winningOption = pollUpdate.find(v => v.voters.length !== 0)?.name;
         if (!winningOption) continue;
         const command = prefix + winningOption;
-        sock.appenTextMessage(command, chatUpdate)}}}});
+        kim.appenTextMessage(command, chatUpdate)}}}});
 
 store?.bind(kim.ev);
 	
