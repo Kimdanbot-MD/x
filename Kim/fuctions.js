@@ -89,18 +89,18 @@ function msToTime(duration) {
 
 exports.msToTime = msToTime
 
-exports.generateMessageTag = (epoch) => {
+export const generateMessageTag = (epoch) => {
     let tag = (0, exports.unixTimestampSeconds)().toString();
     if (epoch)
         tag += '.--' + epoch; // attach epoch if provided
     return tag;
 }
 
-exports.processTime = (timestamp, now) => {
+export const processTime = (timestamp, now) => {
 	return moment.duration(now - moment(timestamp * 1000)).asSeconds()
 }
 
-exports.getRandom = (ext) => {
+export const getRandom = (ext) => {
     return `${Math.floor(Math.random() * 10000)}${ext}`
 }
 
@@ -123,7 +123,7 @@ export const getBuffer = async (url, options) => {
 	}
 }
 
-exports.fetchBuffer = async (url, options) => {
+export const fetchBuffer = async (url, options) => {
 	try {
 		options ? options : {}
 		const res = await axios({
@@ -143,7 +143,7 @@ exports.fetchBuffer = async (url, options) => {
 	}
 }
 
-exports.fetchJson = async (url, options) => {
+export const fetchJson = async (url, options) => {
     try {
         options ? options : {}
         const res = await axios({
@@ -160,7 +160,7 @@ exports.fetchJson = async (url, options) => {
     }
 }
 
-exports.runtime = function(seconds) {
+export const runtime = function(seconds) {
 	seconds = Number(seconds);
 	var d = Math.floor(seconds / (3600 * 24));
 	var h = Math.floor(seconds % (3600 * 24) / 3600);
@@ -173,22 +173,22 @@ exports.runtime = function(seconds) {
 	return dDisplay + ":" + hDisplay + ":" + mDisplay + ":" + sDisplay;
 };
 
-exports.clockString = function(seconds) {
+export const clockString = function(seconds) {
     let h = isNaN(seconds) ? '--' : Math.floor(seconds % (3600 * 24) / 3600)
     let m = isNaN(seconds) ? '--' : Math.floor(seconds % 3600 / 60)
     let s = isNaN(seconds) ? '--' : Math.floor(seconds % 60)
     return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
 }
 
-exports.sleep = async (ms) => {
+export const sleep = async (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-exports.isUrl = (url) => {
+export const isUrl = (url) => {
     return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 }
 
-exports.buffergif = async (image) => {
+export const buffergif = async (image) => {
 const child_process = require('child_process')
 const filename = `${Math.random().toString(36)}`
 await fs.writeFileSync(`./temp/${filename}.gif`, image)
@@ -199,7 +199,7 @@ Promise.all([unlink(`./temp/${filename}.mp4`), unlink(`./tmp/${filename}.gif`)])
 return buffer5
 }
 
-exports.getTime = (format, date) => {
+export const getTime = (format, date) => {
 	if (date) {
 		return moment(date).locale('id').format(format)
 	} else {
@@ -207,11 +207,11 @@ exports.getTime = (format, date) => {
 	}
 }
 
-exports.sleep = async (ms) => {
+export const sleep = async (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms)); // promises?
 }
 
-exports.formatDate = (n, locale = 'id') => {
+export const formatDate = (n, locale = 'id') => {
 	let d = new Date(n)
 	return d.toLocaleDateString(locale, {
 		weekday: 'long',
@@ -224,7 +224,7 @@ exports.formatDate = (n, locale = 'id') => {
 	})
 }
 
-exports.tanggal = (numer) => {
+export const tanggal = (numer) => {
 	myMonths = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
 				myDays = ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo']; 
 				var tgl = new Date(numer);
@@ -283,7 +283,7 @@ exports.getGroupAdmins = (participantes) => {
  * @param {Object} m 
  * @param {Boolean} hasParent 
  */
-exports.smsg = (conn, m, hasParent) => {
+export const smsg = (conn, m, hasParent) => {
     if (!m) return m
     let M = proto.WebMessageInfo
     let protocolMessageKey
