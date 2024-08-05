@@ -235,18 +235,18 @@ export const tanggal = (numer) => {
 				return`${thisDay}, ${day} - ${myMonths[bulan]} - ${year}`
 }
 
-/* exports.formatp = sizeFormatter({
+export const formatp = sizeFormatter({
     std: 'JEDEC', //'SI' = default | 'IEC' | 'JEDEC'
     decimalPlaces: 2,
     keepTrailingZeroes: false,
     render: (literal, symbol) => `${literal} ${symbol}B`,
 })
 
-exports.jsonformat = (string) => {
+export const jsonformat = (string) => {
     return JSON.stringify(string, null, 2)
 }
 
-exports.generateProfilePicture = async (buffer) => {
+export const generateProfilePicture = async (buffer) => {
 	const jimp = await jimp.read(buffer)
 	const min = jimp.getWidth()
 	const max = jimp.getHeight()
@@ -257,11 +257,11 @@ exports.generateProfilePicture = async (buffer) => {
 	}
 }
 
-exports.parseMention = (text = '') => {
+export const parseMention = (text = '') => {
     return [...text.matchAll(/@([0-9]{5,16}|0)/g)].map(v => v[1] + '@s.whatsapp.net')
 }
 
-exports.getGroupAdmins = (participantes) => {
+export const getGroupAdmins = (participantes) => {
 	const admins = []
 	for (let i of participantes) {
 		if (i.admin) admins.push(i.id);
@@ -275,7 +275,7 @@ exports.getGroupAdmins = (participantes) => {
  * @param {Object} m 
  * @param {Boolean} hasParent */
 
-/*export const smsg = (conn, m, hasParent) => {
+export const smsg = (conn, m, hasParent) => {
     if (!m) return m
     let M = proto.WebMessageInfo
     let protocolMessageKey
