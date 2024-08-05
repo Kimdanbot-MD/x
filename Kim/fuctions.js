@@ -828,7 +828,7 @@ conn.sendText = (jid, text, quoted = '', options) => conn.sendMessage(jid, { tex
         conn.ev.emit('messages.upsert', msg)
     }
     return m
-}
+}*/
 
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
@@ -837,4 +837,3 @@ fs.watchFile(file, () => {
 	delete require.cache[file]
 	require(file)
 })
-*/
