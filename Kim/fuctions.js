@@ -6,7 +6,7 @@ import pino from 'pino'
 import moment from 'moment-timezone'
 import sizeFormatter from 'human-readable'
 import jimp from 'jimp'
-import FileType from"file-type"
+import FileType from "file-type"
 import path from "path"
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
 import PhoneNumber from 'awesome-phonenumber'
