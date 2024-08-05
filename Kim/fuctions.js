@@ -5,7 +5,7 @@ import fs from 'fs'
 import axios from 'axios'
 import pino from 'pino'
 import moment from 'moment-timezone'
-import sizeFormatter from 'human-readable'
+import { sizeFormatter } from 'human-readable'
 import jimp from 'jimp'
 import FileType from "file-type"
 import path from "path"
