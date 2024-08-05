@@ -19,7 +19,7 @@ return list[Math.floor(Math.random() * list.length)];
 };
 
 //información del usuario
-exports.getUserProfilePic = async (conn, sender) => {
+export const getUserProfilePic = async (conn, sender) => {
   try {
     const userProfilePicUrl = await conn.profilePictureUrl(sender, "image");
     return await getBuffer(userProfilePicUrl);
@@ -28,7 +28,7 @@ exports.getUserProfilePic = async (conn, sender) => {
   };
 };
 
-exports.getUserBio = async (conn, sender) => {
+export const getUserBio = async (conn, sender) => {
   try {
     const statusData = await conn.fetchStatus(sender);
     return statusData.status;
@@ -51,7 +51,7 @@ const downloadMediaMessage = async (message) => {
 	return buffer
 }
 
-exports.getSizeMedia = (path) => {
+export const getSizeMedia = (path) => {
     return new Promise((resolve, reject) => {
         if (/http/.test(path)) {
             axios.get(path)
@@ -87,7 +87,7 @@ function msToTime(duration) {
   return hours + " Horas " + minutes + " Minutos"
 }
 
-exports.msToTime = msToTime
+export const msToTime = msToTime
 
 export const generateMessageTag = (epoch) => {
     let tag = (0, exports.unixTimestampSeconds)().toString();
