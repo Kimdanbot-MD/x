@@ -7,6 +7,7 @@ import fs from "fs";
 import readline from "readline";
 import NodeCache from 'node-cache'
 import cfonts from 'cfonts'
+import { smsg, getBuffer, sleep} from './libs/fuctions'
 
 const methodCodeQR = process.argv.includes("qr")
 const pairingCode = !!phoneNumber || process.argv.includes("--pairing-code")
