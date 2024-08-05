@@ -207,10 +207,6 @@ export const getTime = (format, date) => {
 	}
 }
 
-export const sleep = async (ms) => {
-    return new Promise(resolve => setTimeout(resolve, ms)); // promises?
-}
-
 export const formatDate = (n, locale = 'id') => {
 	let d = new Date(n)
 	return d.toLocaleDateString(locale, {
