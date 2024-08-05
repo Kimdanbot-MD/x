@@ -139,7 +139,7 @@ export const fetchBuffer = async (url, options) => {
 	}
 }
 
-export const fetchJson = async (url, options) => {
+/*export const fetchJson = async (url, options) => {
     try {
         options ? options : {}
         const res = await axios({
@@ -273,9 +273,9 @@ exports.getGroupAdmins = (participantes) => {
  * Serialize Message
  * @param {WAConnection} conn 
  * @param {Object} m 
- * @param {Boolean} hasParent 
- */
-export const smsg = (conn, m, hasParent) => {
+ * @param {Boolean} hasParent */
+
+/*export const smsg = (conn, m, hasParent) => {
     if (!m) return m
     let M = proto.WebMessageInfo
     let protocolMessageKey
@@ -346,7 +346,7 @@ export const smsg = (conn, m, hasParent) => {
              * 
              * @returns 
              */
-            m.quoted.delete = () => conn.sendMessage(m.quoted.chat, { delete: vM.key })
+ /*           m.quoted.delete = () => conn.sendMessage(m.quoted.chat, { delete: vM.key })
 
 	   /**
 		* 
@@ -355,13 +355,13 @@ export const smsg = (conn, m, hasParent) => {
 		* @param {*} options 
 		* @returns 
 	   */
-            m.quoted.copyNForward = (jid, forceForward = false, options = {}) => conn.copyNForward(jid, vM, forceForward, options)
+     /*       m.quoted.copyNForward = (jid, forceForward = false, options = {}) => conn.copyNForward(jid, vM, forceForward, options)
 
             /**
               *
               * @returns
             */
-            m.quoted.download = () => downloadMediaMessage(m.quoted)
+          /*  m.quoted.download = () => downloadMediaMessage(m.quoted)
         }
     }
   if (m.msg.url) m.download = () => conn.downloadMediaMessage(m.msg)
@@ -376,7 +376,7 @@ export const smsg = (conn, m, hasParent) => {
      * @returns 
      */
 	
-    conn.sendImageAsSticker = async (jid, path, quoted, options = {}) => {
+/*    conn.sendImageAsSticker = async (jid, path, quoted, options = {}) => {
         let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
         let buffer
         if (options && (options.packname || options.author)) {
@@ -397,7 +397,7 @@ export const smsg = (conn, m, hasParent) => {
      * @param {*} options 
      * @returns 
      */
-    conn.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {
+/*    conn.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {
         let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
         let buffer
         if (options && (options.packname || options.author)) {
@@ -410,7 +410,7 @@ export const smsg = (conn, m, hasParent) => {
         return buffer
     }
 
-       conn.sendPayment = async (jid, amount, text, quoted, options) => { 
+/*       conn.sendPayment = async (jid, amount, text, quoted, options) => { 
          conn.relayMessage(jid, { 
            requestPaymentMessage: { 
              currencyCodeIso4217: 'PEN', 
@@ -425,7 +425,7 @@ export const smsg = (conn, m, hasParent) => {
                    }, mentionedJid: conn.parseMention(text)}}}}}, {})
        }
       
-       conn.downloadMediaMessage = async (message) => {
+/*       conn.downloadMediaMessage = async (message) => {
         let mime = (message.msg || message).mimetype || ''
         let messageType = mime.split('/')[0].replace('application', 'document') ? mime.split('/')[0].replace('application', 'document') : mime.split('/')[0]
         let extension = mime.split('/')[1]
@@ -442,7 +442,7 @@ export const smsg = (conn, m, hasParent) => {
     * @param {*} path
     * @param {*} caption 
     */
-    conn.sendImage = async (jid, path, caption = '', quoted = '', options) => { 
+/*    conn.sendImage = async (jid, path, caption = '', quoted = '', options) => { 
      let buffer = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0) 
      return await conn.sendMessage(jid, { image: buffer, caption: caption, ...options }, { quoted }) 
      } 
@@ -453,7 +453,7 @@ export const smsg = (conn, m, hasParent) => {
     * @param {*} thumbnail
     * @param {*} quoted
     */
-    conn.adReply = (jid, caption, thumbnail, quoted, inTrue, newsletterJid, newsletterName) => {
+/*    conn.adReply = (jid, caption, thumbnail, quoted, inTrue, newsletterJid, newsletterName) => {
 	sock.sendMessage(jid ? jid : m.chat, {   
 	text: caption,  
 	contextInfo:{  
@@ -485,7 +485,7 @@ export const smsg = (conn, m, hasParent) => {
     * @param {*} orderTitle // optional
     * @param {*} userJid // optional
     */
-    conn.awaitMessage = async (options = {}) => {
+/*    conn.awaitMessage = async (options = {}) => {
 		return new Promise((resolve, reject) => {
 			if (typeof options !== 'object') reject(new Error('Options must be an object'));
             if (typeof options.sender !== 'string') reject(new Error('Sender must be a string'));
@@ -553,7 +553,7 @@ conn.user.chat = m.chat // chat in user?????????
     * @param {*} fakecaption
     */
 
-    conn.fakeReply = (jid, caption,  fakeNumber, fakeCaption) => {
+   /* conn.fakeReply = (jid, caption,  fakeNumber, fakeCaption) => {
     conn.sendMessage(jid, { text: caption }, {quoted: { key: { fromMe: false, participant: fakeNumber, ...(m.chat ? { remoteJid: null } : {}) }, message: { conversation: fakeCaption }}})
     }
 
@@ -563,7 +563,7 @@ conn.user.chat = m.chat // chat in user?????????
     * @param {*} editedText
     * @param {*} quoted
     */
-    conn.editMessage = async (jid, text, editedText, seconds, quoted) => {
+ /*   conn.editMessage = async (jid, text, editedText, seconds, quoted) => {
      const {key} = await conn.sendMessage(jid, { text: text }, { quoted: quoted ? quoted : m}); 
      await exports.sleep(1000 * seconds); // message in seconds?? (delay)
      await conn.sendMessage(m.chat, { text: editedText, edit: key }); 
@@ -574,7 +574,7 @@ conn.user.chat = m.chat // chat in user?????????
     * @param {*} audio
     * @param {*} quoted
     */
-    conn.sendAudio = async (jid, audio, quoted, ppt, options) => { // audio? uwu
+  /*  conn.sendAudio = async (jid, audio, quoted, ppt, options) => { // audio? uwu
     await conn.sendPresenceUpdate('recording', jid)
     await conn.sendMessage(jid, { audio: { url: audio }, fileName: 'error.mp3', mimetype: 'audio/mp4', ptt: ppt ? ptt : true, ...options }, { quoted: quoted ? quoted : m })
     }
@@ -596,7 +596,7 @@ conn.user.chat = m.chat // chat in user?????????
     * @param {*} options
     */
 	
-    conn.sendTextWithMentions = async (jid, text, quoted, options = {}) => conn.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net') }, ...options }, { quoted })
+   /* conn.sendTextWithMentions = async (jid, text, quoted, options = {}) => conn.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net') }, ...options }, { quoted })
 
     conn.sendText = (jid, text, quoted = '', options) => conn.sendMessage(jid, { text: text, ...options }, { quoted })
 
@@ -605,14 +605,14 @@ conn.user.chat = m.chat // chat in user?????????
     * @returns
     */
     
-    conn.parseMention = async(text) => {
+ /*   conn.parseMention = async(text) => {
     return [...text.matchAll(/@([0-9]{5,16}|0)/g)].map(v => v[1] + '@s.whatsapp.net')}
     
     /**
     * @param {*} jid
     */
 
-    conn.decodeJid = (jid) => {
+   /* conn.decodeJid = (jid) => {
     if (!jid) return jid
     if (/:\d+@/gi.test(jid)) {
     let decode = jidDecode(jid) || {}
@@ -624,7 +624,7 @@ conn.user.chat = m.chat // chat in user?????????
     * @param {*} jid?
     */
     
-    conn.getName = (jid, withoutContact  = false) => { // jid = m.chat?
+   /* conn.getName = (jid, withoutContact  = false) => { // jid = m.chat?
     id = conn.decodeJid(jid)
     withoutContact = conn.withoutContact || withoutContact 
     let v
@@ -650,7 +650,7 @@ conn.user.chat = m.chat // chat in user?????????
     * @param {*} opts = options?
     */
     
-    conn.sendContact = async (jid, kon, quoted = '', opts = {}) => {
+   /* conn.sendContact = async (jid, kon, quoted = '', opts = {}) => {
 	let list = []
 	for (let i of kon) {
 	    list.push({
@@ -669,7 +669,7 @@ conn.user.chat = m.chat // chat in user?????????
      * @param {*} options 
      * @returns 
      */
-    conn.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {
+    /*conn.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {
         let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
         let buffer
         if (options && (options.packname || options.author)) {
@@ -694,7 +694,7 @@ conn.sendText = (jid, text, quoted = '', options) => conn.sendMessage(jid, { tex
 	/**
     * a normal reply
     */
-    m.reply = (text, chatId, options) => conn.sendMessage(chatId ? chatId : m.chat, { text: text }, { quoted: m, detectLinks: false, thumbnail: global.thumb, ...options })
+   /* m.reply = (text, chatId, options) => conn.sendMessage(chatId ? chatId : m.chat, { text: text }, { quoted: m, detectLinks: false, thumbnail: global.thumb, ...options })
 
 	m.react = (text, key, options) => conn.sendMessage(m.chat, { react: {text, key: m.key }})
 
@@ -705,7 +705,7 @@ conn.sendText = (jid, text, quoted = '', options) => conn.sendMessage(jid, { tex
     /**
     * copy message?
     */
-    m.copy = () => exports.smsg(conn, M.fromObject(M.toObject(m)))
+   /* m.copy = () => exports.smsg(conn, M.fromObject(M.toObject(m)))
     
     /**
      * 
@@ -713,7 +713,7 @@ conn.sendText = (jid, text, quoted = '', options) => conn.sendMessage(jid, { tex
      * @returns 
      */
      
-    conn.getFile = async (PATH, saveToFile = false) => { 
+    /*conn.getFile = async (PATH, saveToFile = false) => { 
          let res; let filename; 
          const data = Buffer.isBuffer(PATH) ? PATH : PATH instanceof ArrayBuffer ? PATH.toBuffer() : /^data:.*?\/.*?;base64,/i.test(PATH) ? Buffer.from(PATH.split`,`[1], 'base64') : /^https?:\/\//.test(PATH) ? await (res = await fetch(PATH)).buffer() : fs.existsSync(PATH) ? (filename = PATH, fs.readFileSync(PATH)) : typeof PATH === 'string' ? PATH : Buffer.alloc(0); 
          if (!Buffer.isBuffer(data)) throw new TypeError('Result is not a buffer'); 
@@ -739,7 +739,7 @@ conn.sendText = (jid, text, quoted = '', options) => conn.sendMessage(jid, { tex
     * @param {*} options
     * @return
     */
-   conn.sendFile = async (jid, path, filename = '', caption = '', quoted, ptt = false, options = {}) => {
+   /*conn.sendFile = async (jid, path, filename = '', caption = '', quoted, ptt = false, options = {}) => {
          const type = await conn.getFile(path, true); 
          let {res, data: file, filename: pathFile} = type; 
          if (res && res.status !== 200 || file.length <= 65536) { 
@@ -784,7 +784,7 @@ conn.sendText = (jid, text, quoted = '', options) => conn.sendMessage(jid, { tex
          /** 
                   * @type {import('@whiskeysockets/baileys').proto.WebMessageInfo} 
                   */ 
-         let m; 
+       /*  let m; 
          try { 
            m = await conn.sendMessage(jid, message, {...opt, ...options}); 
          } catch (e) { 
@@ -837,3 +837,4 @@ fs.watchFile(file, () => {
 	delete require.cache[file]
 	require(file)
 })
+*/
