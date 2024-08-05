@@ -830,10 +830,12 @@ conn.sendText = (jid, text, quoted = '', options) => conn.sendMessage(jid, { tex
     return m
 }
 
-let file = require.resolve(__filename)
+const file = require.resolve(__filename);
 fs.watchFile(file, () => {
-	fs.unwatchFile(file)
-	console.log(require('chalk').redBright(`Update ${__filename}`))
-	delete require.cache[file]
-	require(file)
-})
+  try {
+    fs.unwatchFile(file);
+    console.log(chalk.redBright(`Update ${__filename}`));
+    delete require.cache[file];
+    require(file);
+  } catch (error) {
+    console.error('Error:', error)}});
