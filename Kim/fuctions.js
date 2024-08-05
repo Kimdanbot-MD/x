@@ -139,7 +139,7 @@ export const fetchBuffer = async (url, options) => {
 	}
 }
 
-/*export const fetchJson = async (url, options) => {
+export const fetchJson = async (url, options) => {
     try {
         options ? options : {}
         const res = await axios({
@@ -235,7 +235,7 @@ export const tanggal = (numer) => {
 				return`${thisDay}, ${day} - ${myMonths[bulan]} - ${year}`
 }
 
-exports.formatp = sizeFormatter({
+/* exports.formatp = sizeFormatter({
     std: 'JEDEC', //'SI' = default | 'IEC' | 'JEDEC'
     decimalPlaces: 2,
     keepTrailingZeroes: false,
