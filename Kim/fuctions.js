@@ -104,7 +104,7 @@ exports.getRandom = (ext) => {
     return `${Math.floor(Math.random() * 10000)}${ext}`
 }
 
-exports.getBuffer = async (url, options) => {
+export function getBuffer(url, options) => {
 	try {
 		options ? options : {}
 		const res = await axios({
