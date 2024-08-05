@@ -70,11 +70,9 @@ export const getSizeMedia = (path) => {
     })
 }
 
-const unixTimestampSeconds = (date = new Date()) => Math.floor(date.getTime() / 1000)
+export const unixTimestampSeconds = (date = new Date()) => Math.floor(date.getTime() / 1000)
 
-exports.unixTimestampSeconds = unixTimestampSeconds
-
-function msToTime(duration) {
+export function msToTime(duration) {
   var milliseconds = parseInt((duration % 1000) / 100),
     seconds = Math.floor((duration / 1000) % 60),
     minutes = Math.floor((duration / (1000 * 60)) % 60),
@@ -86,8 +84,6 @@ function msToTime(duration) {
 
   return hours + " Horas " + minutes + " Minutos"
 }
-
-exports.msToTime = msToTime
 
 export const generateMessageTag = (epoch) => {
     let tag = (0, exports.unixTimestampSeconds)().toString();
