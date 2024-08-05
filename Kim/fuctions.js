@@ -87,7 +87,7 @@ function msToTime(duration) {
   return hours + " Horas " + minutes + " Minutos"
 }
 
-export const msToTime = msToTime
+exports.msToTime = msToTime
 
 export const generateMessageTag = (epoch) => {
     let tag = (0, exports.unixTimestampSeconds)().toString();
