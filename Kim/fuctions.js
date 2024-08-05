@@ -830,7 +830,7 @@ conn.sendText = (jid, text, quoted = '', options) => conn.sendMessage(jid, { tex
     return m
 }
 
-const file = require.resolve(__filename);
+/*const file = path.resolve(__filename);
 fs.watchFile(file, () => {
   try {
     fs.unwatchFile(file);
@@ -838,4 +838,4 @@ fs.watchFile(file, () => {
     delete require.cache[file];
     require(file);
   } catch (error) {
-    console.error('Error:', error)}});
+    console.error('Error:', error)}});*/
