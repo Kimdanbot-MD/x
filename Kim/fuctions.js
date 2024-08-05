@@ -185,7 +185,7 @@ export const isUrl = (url) => {
 }
 
 export const buffergif = async (image) => {
-import child_process from 'child_process'
+const child_process = require('child_process')
 const filename = `${Math.random().toString(36)}`
 await fs.writeFileSync(`./temp/${filename}.gif`, image)
 child_process.exec(`ffmpeg -i ./temp/${filename}.gif -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" ./tmp${filename}.mp4`)
