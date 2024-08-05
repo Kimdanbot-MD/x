@@ -10,8 +10,8 @@ import FileType from "file-type"
 import path from "path"
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
 import PhoneNumber from 'awesome-phonenumber'
-import es from './Kim/idiomas/es.js' //Español 
-import en from './Kim/idiomas/en.js' //Ingles 
+import es from './idiomas/es.js' //Español 
+import en from './idiomas/en.js' //Ingles 
 
 function pickRandom(list) {
 return list[Math.floor(Math.random() * list.length)];
