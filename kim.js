@@ -1,5 +1,6 @@
 // ═════════════𓊈『 IMPORTACIONES 』𓊉═════════════ 
-import { WaMessageStubType, areJidsSameUser, downloadContentFromMessage, generateWAMessageContent, generateWAMessageFromContent, generateWAMessage, prepareWAMessageMedia, relayMessage} from '@whiskeysockets/baileys'  
+import baileys from '@whiskeysockets/baileys'  
+const { WaMessageStubType, areJidsSameUser, downloadContentFromMessage, generateWAMessageContent, generateWAMessageFromContent, generateWAMessage, prepareWAMessageMedia, relayMessage} = baileys
 import pino from "pino";
 import chalk from "chalk";
 import fs from "fs";
