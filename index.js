@@ -7,6 +7,7 @@ import fs from "fs";
 import readline from "readline";
 import NodeCache from 'node-cache'
 import cfonts from 'cfonts'
+import { kim } from "./kim.js";
 import { smsg, getBuffer, sleep } from "./Kim/fuctions.js"
 
 const methodCodeQR = process.argv.includes("qr")
@@ -118,7 +119,6 @@ sock.ev.on('messages.upsert', async (chatUpdate) => {
         global.numBot = sock.user.id.split(":")[0] + "@s.whatsapp.net";
         global.numBot2 = sock.user.id;
         const m = smsg(sock, mek);
-        import { kim } from "./kim.js";
         kim(sock, m, chatUpdate, mek, store);       
       } catch (e) {
         console.error(e)}});
