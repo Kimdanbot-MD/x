@@ -277,11 +277,9 @@ export const getGroupAdmins = (participantes) => {
 
 export const smsg = (kim, m, hasParent) => {
     if (!m) return m
-    let M = proto.WebMessageInfo
     let protocolMessageKey
     
     if (m.key) {
-        m.messageInfo = M
         m.id = m.key.id
         m.isBaileys = m.id.startsWith('BAE5') && m.id.length === 16
         m.chat = m.key.remoteJid
