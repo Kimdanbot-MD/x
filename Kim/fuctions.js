@@ -279,7 +279,6 @@ export const smsg = (kim, m, hasParent) => {
     if (!m) return m
     let protocolMessageKey
     
-    m = m.messages[0]
     if (m.key) {
         m.id = m.key.id
         m.isBaileys = m.id.startsWith('BAE5') && m.id.length === 16
