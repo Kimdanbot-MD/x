@@ -1,4 +1,5 @@
 // ═════════════𓊈『 IMPORTACIONES 』𓊉═════════════ 
+conn
 import { WaMessageStubType, areJidsSameUser, downloadContentFromMessage, generateWAMessageContent, generateWAMessageFromContent, generateWAMessage, prepareWAMessageMedia, relayMessage} from '@whiskeysockets/baileys'  
 import pino from "pino";
 import chalk from "chalk";
