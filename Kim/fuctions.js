@@ -455,8 +455,8 @@ export const smsg = (kim, m, hasParent) => {
     * @param {*} thumbnail
     * @param {*} quoted
     */
-   conn.adReply = (jid, caption, thumbnail, quoted, inTrue, newsletterJid, newsletterName) => {
-	sock.sendMessage(jid ? jid : m.chat, {   
+   kim.adReply = (jid, caption, thumbnail, quoted, inTrue, newsletterJid, newsletterName) => {
+	kim.sendMessage(jid ? jid : m.chat, {   
 	text: caption,  
 	contextInfo:{  
 	forwardedNewsletterMessageInfo: { 
