@@ -1,6 +1,4 @@
 //import { imageToWebp, videoToWebp, writeExifImg, writeExifVid, toAudio } from './functions2.js'
-
-conn
 import Baileys from '@whiskeysockets/baileys';
 const { areJidsSameUser, generateWAMessage, prepareWAMessageMedia, generateWAMessageFromContent, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto } = Baileys;
 import fs from 'fs'
