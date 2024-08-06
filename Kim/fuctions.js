@@ -542,11 +542,11 @@ export const smsg = (kim, m, hasParent) => {
     "totalCurrencyCode":"USD",
     "contextInfo":{ "expiration": 604800, "ephemeralSettingTimestamp":"1679959486","entryPointConversionSource":"global_search_new_chat","entryPointConversionApp":"whatsapp","entryPointConversionDelaySeconds":9,"disappearingMode":{"initiator":"CHANGED_IN_CHAT"}}}
     }), { userJid: userJid ? userJid : kim.user.id})
-    conn.relayMessage(jid, order.message, { messageId: order.key.id })
+    kim.relayMessage(jid, order.message, { messageId: order.key.id })
     }
    
-conn.user.jid = conn.user.id.split(":")[0] + "@s.whatsapp.net" // jid in user?
-conn.user.chat = m.chat // chat in user?????????
+kim.user.jid = kim.user.id.split(":")[0] + "@s.whatsapp.net" // jid in user?
+kim.user.chat = m.chat // chat in user?????????
     
     /**
     * @param {*} jid
@@ -555,8 +555,8 @@ conn.user.chat = m.chat // chat in user?????????
     * @param {*} fakecaption
     */
 
-    conn.fakeReply = (jid, caption,  fakeNumber, fakeCaption) => {
-    conn.sendMessage(jid, { text: caption }, {quoted: { key: { fromMe: false, participant: fakeNumber, ...(m.chat ? { remoteJid: null } : {}) }, message: { conversation: fakeCaption }}})
+    kim.fakeReply = (jid, caption,  fakeNumber, fakeCaption) => {
+    kim.sendMessage(jid, { text: caption }, {quoted: { key: { fromMe: false, participant: fakeNumber, ...(m.chat ? { remoteJid: null } : {}) }, message: { conversation: fakeCaption }}})
     }
 
     /**
@@ -565,10 +565,10 @@ conn.user.chat = m.chat // chat in user?????????
     * @param {*} editedText
     * @param {*} quoted
     */
-    conn.editMessage = async (jid, text, editedText, seconds, quoted) => {
-     const {key} = await conn.sendMessage(jid, { text: text }, { quoted: quoted ? quoted : m}); 
+    kim.editMessage = async (jid, text, editedText, seconds, quoted) => {
+     const {key} = await kim.sendMessage(jid, { text: text }, { quoted: quoted ? quoted : m}); 
      await exports.sleep(1000 * seconds); // message in seconds?? (delay)
-     await conn.sendMessage(m.chat, { text: editedText, edit: key }); 
+     await kim.sendMessage(m.chat, { text: editedText, edit: key }); 
     }
     
     /**
@@ -576,13 +576,13 @@ conn.user.chat = m.chat // chat in user?????????
     * @param {*} audio
     * @param {*} quoted
     */
-    conn.sendAudio = async (jid, audio, quoted, ppt, options) => { // audio? uwu
-    await conn.sendPresenceUpdate('recording', jid)
-    await conn.sendMessage(jid, { audio: { url: audio }, fileName: 'error.mp3', mimetype: 'audio/mp4', ptt: ppt ? ptt : true, ...options }, { quoted: quoted ? quoted : m })
+    kim.sendAudio = async (jid, audio, quoted, ppt, options) => { // audio? uwu
+    await kim.sendPresenceUpdate('recording', jid)
+    await kim.sendMessage(jid, { audio: { url: audio }, fileName: 'error.mp3', mimetype: 'audio/mp4', ptt: ppt ? ptt : true, ...options }, { quoted: quoted ? quoted : m })
     }
-    conn.parseAudio = async (jid, audio, quoted, ppt, name, link, image) => {
-    await conn.sendPresenceUpdate('recording', jid)
-    await conn.sendMessage(jid, { audio: { url: audio }, fileName: 'error.mp3', mimetype: 'audio/mp4', ptt: ppt ? ptt : true, contextInfo:{  externalAdReply: { showAdAttribution: true,
+    kim.parseAudio = async (jid, audio, quoted, ppt, name, link, image) => {
+    await kim.sendPresenceUpdate('recording', jid)
+    await kim.sendMessage(jid, { audio: { url: audio }, fileName: 'error.mp3', mimetype: 'audio/mp4', ptt: ppt ? ptt : true, contextInfo:{  externalAdReply: { showAdAttribution: true,
     mediaType:  1,
     mediaUrl: link ? link : wha,
     title: name ? name : botname,
@@ -598,23 +598,23 @@ conn.user.chat = m.chat // chat in user?????????
     * @param {*} options
     */
 	
-    conn.sendTextWithMentions = async (jid, text, quoted, options = {}) => conn.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net') }, ...options }, { quoted })
+    kim.sendTextWithMentions = async (jid, text, quoted, options = {}) => kim.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net') }, ...options }, { quoted })
 
-    conn.sendText = (jid, text, quoted = '', options) => conn.sendMessage(jid, { text: text, ...options }, { quoted })
+    kim.sendText = (jid, text, quoted = '', options) => kim.sendMessage(jid, { text: text, ...options }, { quoted })
 
 	
 /**
     * @returns
     */
     
-    conn.parseMention = async(text) => {
+    kim.parseMention = async(text) => {
     return [...text.matchAll(/@([0-9]{5,16}|0)/g)].map(v => v[1] + '@s.whatsapp.net')}
     
     /**
     * @param {*} jid
     */
 
-    conn.decodeJid = (jid) => {
+    kim.decodeJid = (jid) => {
     if (!jid) return jid
     if (/:\d+@/gi.test(jid)) {
     let decode = jidDecode(jid) || {}
@@ -626,20 +626,20 @@ conn.user.chat = m.chat // chat in user?????????
     * @param {*} jid?
     */
     
-    conn.getName = (jid, withoutContact  = false) => { // jid = m.chat?
-    id = conn.decodeJid(jid)
-    withoutContact = conn.withoutContact || withoutContact 
+    kim.getName = (jid, withoutContact  = false) => { // jid = m.chat?
+    id = kim.decodeJid(jid)
+    withoutContact = kim.withoutContact || withoutContact 
     let v
     if (id.endsWith("@g.us")) return new Promise(async (resolve) => {
     v = store.contacts[id] || {}
-    if (!(v.name || v.subject)) v = conn.groupMetadata(id) || {}
+    if (!(v.name || v.subject)) v = kim.groupMetadata(id) || {}
     resolve(v.name || v.subject || PhoneNumber('+' + id.replace('@s.whatsapp.net', '')).getNumber('international'))
     })
     else v = id === '0@s.whatsapp.net' ? {
     id,
     name: 'WhatsApp'
-    } : id === conn.decodeJid(conn.user.jid) ?
-    conn.user :
+    } : id === kim.decodeJid(kim.user.jid) ?
+    kim.user :
     (store.contacts[id] || {})
     return (withoutContact ? '' : v.name) || v.subject || v.verifiedName || PhoneNumber('+' + jid.replace('@s.whatsapp.net', '')).getNumber('international')
     }
@@ -652,15 +652,15 @@ conn.user.chat = m.chat // chat in user?????????
     * @param {*} opts = options?
     */
     
-    conn.sendContact = async (jid, kon, quoted = '', opts = {}) => {
+    kim.sendContact = async (jid, kon, quoted = '', opts = {}) => {
 	let list = []
 	for (let i of kon) {
 	    list.push({
-	    	displayName: await conn.getName(i),
-	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await conn.getName(i)}\nFN:${await conn.getName(i)}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:toca aqui uwu\nitem2.EMAIL;type=INTERNET:${yt}\nitem2.X-ABLabel:YouTube\nitem3.URL:${github}\nitem3.X-ABLabel:GitHub\nitem4.ADR:;;${location};;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
+	    	displayName: await kim.getName(i),
+	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await kim.getName(i)}\nFN:${await kim.getName(i)}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:toca aqui uwu\nitem2.EMAIL;type=INTERNET:${yt}\nitem2.X-ABLabel:YouTube\nitem3.URL:${github}\nitem3.X-ABLabel:GitHub\nitem4.ADR:;;${location};;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
 	    })
 	}
-	conn.sendMessage(jid, { contacts: { displayName: `${list.length} Contacto`, contacts: list }, ...opts }, { quoted })
+	kim.sendMessage(jid, { contacts: { displayName: `${list.length} Contacto`, contacts: list }, ...opts }, { quoted })
     }
     
     /**
@@ -671,7 +671,7 @@ conn.user.chat = m.chat // chat in user?????????
      * @param {*} options 
      * @returns 
      */
-    conn.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {
+    kim.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {
         let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
         let buffer
         if (options && (options.packname || options.author)) {
@@ -680,34 +680,34 @@ conn.user.chat = m.chat // chat in user?????????
             buffer = await videoToWebp(buff)
         }
 
-        await conn.sendMessage(jid, { sticker: { url: buffer }, ...options }, { quoted })
+        await kim.sendMessage(jid, { sticker: { url: buffer }, ...options }, { quoted })
         return buffer
     }
-    conn.sendPoll = (jid, name = '', values = [], selectableCount = 1) => { return conn.sendMessage(jid, { poll: { name, values, selectableCount }}) }
+    kim.sendPoll = (jid, name = '', values = [], selectableCount = 1) => { return kim.sendMessage(jid, { poll: { name, values, selectableCount }}) }
     
-conn.parseMention = (text = '') => {
+kim.parseMention = (text = '') => {
 return [...text.matchAll(/@([0-9]{5,16}|0)/g)].map(v => v[1] + '@s.whatsapp.net')
 }
 
-conn.sendTextWithMentions = async (jid, text, quoted, options = {}) => conn.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net') }, ...options }, { quoted })
+kim.sendTextWithMentions = async (jid, text, quoted, options = {}) => kim.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net') }, ...options }, { quoted })
 
-conn.sendText = (jid, text, quoted = '', options) => conn.sendMessage(jid, { text: text, ...options }, { quoted })
+kim.sendText = (jid, text, quoted = '', options) => kim.sendMessage(jid, { text: text, ...options }, { quoted })
 	
 	/**
     * a normal reply
     */
-    m.reply = (text, chatId, options) => conn.sendMessage(chatId ? chatId : m.chat, { text: text }, { quoted: m, detectLinks: false, thumbnail: global.thumb, ...options })
+    m.reply = (text, chatId, options) => kim.sendMessage(chatId ? chatId : m.chat, { text: text }, { quoted: m, detectLinks: false, thumbnail: global.thumb, ...options })
 
-	m.react = (text, key, options) => conn.sendMessage(m.chat, { react: {text, key: m.key }})
+	m.react = (text, key, options) => kim.sendMessage(m.chat, { react: {text, key: m.key }})
 
-	m.copyNForward = (jid = m.chat, forceForward = false, options = {}) => conn.copyNForward(jid, true, {readViewOnce: true})
+	m.copyNForward = (jid = m.chat, forceForward = false, options = {}) => kim.copyNForward(jid, true, {readViewOnce: true})
 	
-	//m.react = (text, chatId, key, options) => conn.relayMessage(chatId ? chatId : m.chat, {reactionMessage: { key: m.key, text, }}, { messageId: m.key.id })
+	//m.react = (text, chatId, key, options) => kim.relayMessage(chatId ? chatId : m.chat, {reactionMessage: { key: m.key, text, }}, { messageId: m.key.id })
 
     /**
     * copy message?
     */
-    m.copy = () => exports.smsg(conn, M.fromObject(M.toObject(m)))
+    m.copy = () => exports.smsg(kim, M.fromObject(M.toObject(m)))
     
     /**
      * 
@@ -715,7 +715,7 @@ conn.sendText = (jid, text, quoted = '', options) => conn.sendMessage(jid, { tex
      * @returns 
      */
      
-    conn.getFile = async (PATH, saveToFile = false) => { 
+    kim.getFile = async (PATH, saveToFile = false) => { 
          let res; let filename; 
          const data = Buffer.isBuffer(PATH) ? PATH : PATH instanceof ArrayBuffer ? PATH.toBuffer() : /^data:.*?\/.*?;base64,/i.test(PATH) ? Buffer.from(PATH.split`,`[1], 'base64') : /^https?:\/\//.test(PATH) ? await (res = await fetch(PATH)).buffer() : fs.existsSync(PATH) ? (filename = PATH, fs.readFileSync(PATH)) : typeof PATH === 'string' ? PATH : Buffer.alloc(0); 
          if (!Buffer.isBuffer(data)) throw new TypeError('Result is not a buffer'); 
@@ -741,8 +741,8 @@ conn.sendText = (jid, text, quoted = '', options) => conn.sendMessage(jid, { tex
     * @param {*} options
     * @return
     */
-   conn.sendFile = async (jid, path, filename = '', caption = '', quoted, ptt = false, options = {}) => {
-         const type = await conn.getFile(path, true); 
+   kim.sendFile = async (jid, path, filename = '', caption = '', quoted, ptt = false, options = {}) => {
+         const type = await kim.getFile(path, true); 
          let {res, data: file, filename: pathFile} = type; 
          if (res && res.status !== 200 || file.length <= 65536) { 
            try { 
@@ -788,18 +788,18 @@ conn.sendText = (jid, text, quoted = '', options) => conn.sendMessage(jid, { tex
                   */ 
          let m; 
          try { 
-           m = await conn.sendMessage(jid, message, {...opt, ...options}); 
+           m = await kim.sendMessage(jid, message, {...opt, ...options}); 
          } catch (e) { 
            console.error(e); 
            m = null; 
          } finally { 
-           if (!m) m = await conn.sendMessage(jid, {...message, [mtype]: file}, {...opt, ...options}); 
+           if (!m) m = await kim.sendMessage(jid, {...message, [mtype]: file}, {...opt, ...options}); 
            file = null; // releasing the memory 
            return m; 
          } 
        }
        
-    conn.downloadAndSaveMediaMessage = async (message, filename, attachExtension = true) => {
+    kim.downloadAndSaveMediaMessage = async (message, filename, attachExtension = true) => {
     let quoted = message.msg ? message.msg : message
     let mime = (message.msg || message).mimetype || ''
     let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0]
@@ -813,12 +813,12 @@ conn.sendText = (jid, text, quoted = '', options) => conn.sendMessage(jid, { tex
     return trueFileName
     }
     
-    conn.appenTextMessage = async(text, chatUpdate) => {
+    kim.appenTextMessage = async(text, chatUpdate) => {
         let messages = await generateWAMessage(m.chat, { text: text, mentions: m.mentionedJid }, {
-            userJid: conn.user.id,
+            userJid: kim.user.id,
             quoted: m.quoted && m.quoted.fakeObj
         })
-        messages.key.fromMe = areJidsSameUser(m.sender, conn.user.id)
+        messages.key.fromMe = areJidsSameUser(m.sender, kim.user.id)
         messages.key.id = m.key.id
         messages.pushName = m.pushName
         if (m.isGroup) messages.participant = m.sender
@@ -827,7 +827,7 @@ conn.sendText = (jid, text, quoted = '', options) => conn.sendMessage(jid, { tex
             messages: [proto.WebMessageInfo.fromObject(messages)],
             type: 'append'
         }
-        conn.ev.emit('messages.upsert', msg)
+        kim.ev.emit('messages.upsert', msg)
     }
     return m
 }
