@@ -1,5 +1,5 @@
 //import { imageToWebp, videoToWebp, writeExifImg, writeExifVid, toAudio } from './functions2.js'
-sock
+
 conn
 import Baileys from '@whiskeysockets/baileys';
 const { areJidsSameUser, generateWAMessage, prepareWAMessageMedia, generateWAMessageFromContent, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto } = Baileys;
@@ -21,18 +21,18 @@ return list[Math.floor(Math.random() * list.length)];
 };
 
 //información del usuario
-export const getUserProfilePic = async (conn, sender) => {
+export const getUserProfilePic = async (kim, sender) => {
   try {
-    const userProfilePicUrl = await conn.profilePictureUrl(sender, "image");
+    const userProfilePicUrl = await kim.profilePictureUrl(sender, "image");
     return await getBuffer(userProfilePicUrl);
   } catch {
     return fs.readFileSync("./media/Menu1");
   };
 };
 
-export const getUserBio = async (conn, sender) => {
+export const getUserBio = async (kim, sender) => {
   try {
-    const statusData = await conn.fetchStatus(sender);
+    const statusData = await kim.fetchStatus(sender);
     return statusData.status;
   } catch {
     return "";
@@ -273,7 +273,7 @@ export const getGroupAdmins = (participantes) => {
 
 /**
  * Serialize Message
- * @param {WAConnection} conn 
+ * @param {WAConnection} kim 
  * @param {Object} m 
  * @param {Boolean} hasParent */
 
@@ -289,7 +289,7 @@ export const smsg = (kim, m, hasParent) => {
         m.chat = m.key.remoteJid
         m.fromMe = m.key.fromMe
         m.isGroup = m.chat.endsWith('@g.us')
-        m.sender = m.fromMe ? (conn.user.id.split(":")[0]+'@s.whatsapp.net' || conn.user.id) : (m.key.participant || m.key.remoteJid)
+        m.sender = m.fromMe ? (kim.user.id.split(":")[0]+'@s.whatsapp.net' || kim.user.id) : (m.key.participant || m.key.remoteJid)
         m.device = m.key.id.length > 21 ? 'Android' : m.key.id.substring(0, 2) == '3A' ? 'IOS' : 'whatsapp web'
     }
 
@@ -301,12 +301,12 @@ export const smsg = (kim, m, hasParent) => {
         protocolMessageKey = m.msg.key; 
         if (protocolMessageKey == 'status@broadcast') protocolMessageKey.remoteJid = m.chat; 
         if (!protocolMessageKey.participant || protocolMessageKey.participant == 'status_me') protocolMessageKey.participant = m.sender; 
-        protocolMessageKey.fromMe = conn.decodeJid(protocolMessageKey.participant) === conn.decodeJid(conn.user.id); 
-        if (!protocolMessageKey.fromMe && protocolMessageKey.remoteJid === conn.decodeJid(conn.user.id)) protocolMessageKey.remoteJid = m.sender; 
+        protocolMessageKey.fromMe = kim.decodeJid(protocolMessageKey.participant) === kim.decodeJid(kim.user.id); 
+        if (!protocolMessageKey.fromMe && protocolMessageKey.remoteJid === kim.decodeJid(kim.user.id)) protocolMessageKey.remoteJid = m.sender; 
         } 
   
         try {
-        if (protocolMessageKey && m.mtype == 'protocolMessage') conn.ev.emit('message.delete', protocolMessageKey); 
+        if (protocolMessageKey && m.mtype == 'protocolMessage') kim.ev.emit('message.delete', protocolMessageKey); 
         } catch (e) {
         console.error(e)
         }
@@ -331,7 +331,7 @@ export const smsg = (kim, m, hasParent) => {
 			m.quoted.chat = m.msg.contextInfo.remoteJid || m.chat
             m.quoted.isBaileys = m.quoted.id ? m.quoted.id.startsWith('BAE5') && m.quoted.id.length === 16 : false
 			m.quoted.sender = m.msg.contextInfo.participant.split(":")[0] || m.msg.contextInfo.participant
-			m.quoted.fromMe = m.quoted.sender === (conn.user && conn.user.id)
+			m.quoted.fromMe = m.quoted.sender === (kim.user && kim.user.id)
             m.quoted.text = m.quoted.text || m.quoted.caption || ''
 			m.quoted.mentionedJid = m.msg.contextInfo ? m.msg.contextInfo.mentionedJid : []
             let vM = m.quoted.fakeObj = M.fromObject({
@@ -387,7 +387,7 @@ export const smsg = (kim, m, hasParent) => {
             buffer = await imageToWebp(buff)
         }
 
-        await conn.sendMessage(jid, { sticker: { url: buffer }, ...options }, { quoted })
+        await kim.sendMessage(jid, { sticker: { url: buffer }, ...options }, { quoted })
         return buffer
     }
 
@@ -408,12 +408,12 @@ export const smsg = (kim, m, hasParent) => {
             buffer = await videoToWebp(buff)
         }
 
-        await conn.sendMessage(jid, { sticker: { url: buffer }, ...options }, { quoted })
+        await kim.sendMessage(jid, { sticker: { url: buffer }, ...options }, { quoted })
         return buffer
     }
 
-       conn.sendPayment = async (jid, amount, text, quoted, options) => { 
-         conn.relayMessage(jid, { 
+       kim.sendPayment = async (jid, amount, text, quoted, options) => { 
+         kim.relayMessage(jid, { 
            requestPaymentMessage: { 
              currencyCodeIso4217: 'PEN', 
              amount1000: amount, 
@@ -424,10 +424,10 @@ export const smsg = (kim, m, hasParent) => {
                  contextInfo: { 
                    externalAdReply: { 
                      showAdAttribution: true, 
-                   }, mentionedJid: conn.parseMention(text)}}}}}, {})
+                   }, mentionedJid: kim.parseMention(text)}}}}}, {})
        }
       
-       conn.downloadMediaMessage = async (message) => {
+       kim.downloadMediaMessage = async (message) => {
         let mime = (message.msg || message).mimetype || ''
         let messageType = mime.split('/')[0].replace('application', 'document') ? mime.split('/')[0].replace('application', 'document') : mime.split('/')[0]
         let extension = mime.split('/')[1]
@@ -444,9 +444,9 @@ export const smsg = (kim, m, hasParent) => {
     * @param {*} path
     * @param {*} caption 
     */
-   conn.sendImage = async (jid, path, caption = '', quoted = '', options) => { 
+   kim.sendImage = async (jid, path, caption = '', quoted = '', options) => { 
      let buffer = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0) 
-     return await conn.sendMessage(jid, { image: buffer, caption: caption, ...options }, { quoted }) 
+     return await kim.sendMessage(jid, { image: buffer, caption: caption, ...options }, { quoted }) 
      } 
      
     /**
@@ -487,7 +487,7 @@ export const smsg = (kim, m, hasParent) => {
     * @param {*} orderTitle // optional
     * @param {*} userJid // optional
     */
-    conn.awaitMessage = async (options = {}) => {
+    kim.awaitMessage = async (options = {}) => {
 		return new Promise((resolve, reject) => {
 			if (typeof options !== 'object') reject(new Error('Options must be an object'));
             if (typeof options.sender !== 'string') reject(new Error('Sender must be a string'));
@@ -508,26 +508,26 @@ export const smsg = (kim, m, hasParent) => {
                         const isGroup = chatId.endsWith('@g.us');
                         const isStatus = chatId == 'status@broadcast';
             
-                        const sender = fromMe ? conn.user.id.replace(/:.*@/g, '@') : (isGroup || isStatus) ? message.key.participant.replace(/:.*@/g, '@') : chatId;
+                        const sender = fromMe ? kim.user.id.replace(/:.*@/g, '@') : (isGroup || isStatus) ? message.key.participant.replace(/:.*@/g, '@') : chatId;
                         if (sender == options.sender && chatId == options.chatJid && filter(message)) {
-                            conn.ev.off('messages.upsert', listener);
+                            kim.ev.off('messages.upsert', listener);
                             clearTimeout(interval);
                             resolve(message);
                         }
                     }
                 }
             }
-            conn.ev.on('messages.upsert', listener);
+            kim.ev.on('messages.upsert', listener);
             if (timeout) {
                 interval = setTimeout(() => {
-                    conn.ev.off('messages.upsert', listener);
+                    kim.ev.off('messages.upsert', listener);
                     reject(new Error('Timeout'));
                 }, timeout);
             }
         });
     }
-    conn.sendCart = async (jid, text, thumbail, orderTitle, userJid) => {
-    var messa = await prepareWAMessageMedia({ image: thumbail ? thumbail : success }, { upload: conn.waUploadToServer })
+    kim.sendCart = async (jid, text, thumbail, orderTitle, userJid) => {
+    var messa = await prepareWAMessageMedia({ image: thumbail ? thumbail : success }, { upload: kim.waUploadToServer })
     var order = generateWAMessageFromContent(jid, proto.Message.fromObject({
     "orderMessage":{ "orderId":"3648563358700955",
     "thumbnail": thumbail ? thumbail : success,
@@ -541,7 +541,7 @@ export const smsg = (kim, m, hasParent) => {
     "totalAmount1000": "-500000000",
     "totalCurrencyCode":"USD",
     "contextInfo":{ "expiration": 604800, "ephemeralSettingTimestamp":"1679959486","entryPointConversionSource":"global_search_new_chat","entryPointConversionApp":"whatsapp","entryPointConversionDelaySeconds":9,"disappearingMode":{"initiator":"CHANGED_IN_CHAT"}}}
-    }), { userJid: userJid ? userJid : conn.user.id})
+    }), { userJid: userJid ? userJid : kim.user.id})
     conn.relayMessage(jid, order.message, { messageId: order.key.id })
     }
    
