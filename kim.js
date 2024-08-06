@@ -17,7 +17,7 @@ for await(const chunk of stream) {
 buffer = Buffer.concat([buffer, chunk]) }  
 return buffer 
 }     
-module.exports = kim = async (conn, m, chatUpdate, mek, store, kim) => { // Raíz "kim" para mensajes y argumentos
+module.exports = kim = async (kim, m, chatUpdate, mek, store, kim) => { // Raíz "kim" para mensajes y argumentos
 var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
 
 function KimR(list) {return list[Math.floor(list.length * Math.random())]}     
@@ -41,12 +41,12 @@ const full_args = body.replace(command, '').slice(1).trim()
 const q = args.join(" ")
 let t = m.messageTimestamp
 const pushname = m.pushName || "Sin nombre"
-const botnm = conn.user.id.split(":")[0] + "@s.whatsapp.net"
+const botnm = kim.user.id.split(":")[0] + "@s.whatsapp.net"
 const userSender = m.key.fromMe ? botnm : m.isGroup && m.key.participant.includes(":") ? m.key.participant.split(":")[0] + "@s.whatsapp.net" : m.key.remoteJid.includes(":") ? m.key.remoteJid.split(":")[0] + "@s.whatsapp.net" : m.key.fromMe ? botnm : m.isGroup ? m.key.participant : m.key.remoteJid
 const isCreator = global.owner.map(([numero]) => numero.replace(/[^\d\s().+:]/g, '').replace(/\s/g, '') + '@s.whatsapp.net').includes(userSender)
 const isOwner = isCreator || m.fromMe;
 const isMods = isOwner || global.mods.map((v) => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender);
-const itsMe = m.sender == conn.user.id ? true : false
+const itsMe = m.sender == kim.user.id ? true : false
 const text = args.join(" ")
 const quoted = m.quoted ? m.quoted : m
 const sender = m.key.fromMe ? botnm : m.isGroup ? m.key.participant : m.key.remoteJid
@@ -54,8 +54,8 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 const mime = (quoted.msg || quoted).mimetype || ''
 const qmsg = (quoted.msg || quoted)
 const isMedia = /image|video|sticker|audio/.test(mime)
-const numBot = conn.user.id.split(":")[0] + "@s.whatsapp.net"
-const numBot2 = conn.user.id
+const numBot = kim.user.id.split(":")[0] + "@s.whatsapp.net"
+const numBot2 = kim.user.id
 const mentions = []
 if (m.message[type].contextInfo) {
 if (m.message[type].contextInfo.mentionedJid) {
@@ -64,7 +64,7 @@ for (let i = 0; i < msd.length; i++) {
 mentions.push(msd[i])}}}
   
 // ═════════════𓊈『 GRUPO 』𓊉═════════════
-const groupMetadata = m.isGroup ? await conn.groupMetadata(from) : ''
+const groupMetadata = m.isGroup ? await kim.groupMetadata(from) : ''
 const groupName = m.isGroup ? groupMetadata.subject : ''
 const participants = m.isGroup ? await groupMetadata.participants : ''
 const groupAdmins = m.isGroup ? await getGroupAdmins(participants) : ''
@@ -82,9 +82,9 @@ const fdoc = {key : {participant : '0@s.whatsapp.net', ...(from ? { remoteJid: `
  // ═════════════𓊈『 MENSAJES 』𓊉═════════════
 const reply = (text) => {
 m.reply(text)} // Enviar una respuesta
-const sendAdMessage = (text, title, body, image, url) => { conn.sendMessage(from, {text: text, contextInfo: { externalAdReply: { title: title, body: body, mediaUrl: url, sourceUrl: url, previewType: 'PHOTO', showAdAttribution: true, thumbnail: image, sourceUrl: url }}}, {})}
-const sendImage = ( image, caption ) => { conn.sendMessage(from, { image: image, caption: caption }, { quoted: m })}
-const sendImageAsUrl = ( url, caption ) => { conn.sendMessage(from, { image:  {url: url }, caption: caption }, { quoted: m })}
+const sendAdMessage = (text, title, body, image, url) => { kim.sendMessage(from, {text: text, contextInfo: { externalAdReply: { title: title, body: body, mediaUrl: url, sourceUrl: url, previewType: 'PHOTO', showAdAttribution: true, thumbnail: image, sourceUrl: url }}}, {})}
+const sendImage = ( image, caption ) => { kim.sendMessage(from, { image: image, caption: caption }, { quoted: m })}
+const sendImageAsUrl = ( url, caption ) => { kim.sendMessage(from, { image:  {url: url }, caption: caption }, { quoted: m })}
 	
 // ═════════════𓊈『 TIPOS DE MENSAJES Y CITADOS 』𓊉═════════════
 const isAudio = type == 'audioMessage' 
