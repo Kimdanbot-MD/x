@@ -1,4 +1,6 @@
 //import { imageToWebp, videoToWebp, writeExifImg, writeExifVid, toAudio } from './functions2.js'
+sock
+conn
 import Baileys from '@whiskeysockets/baileys';
 const { areJidsSameUser, generateWAMessage, prepareWAMessageMedia, generateWAMessageFromContent, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto } = Baileys;
 import fs from 'fs'
@@ -275,7 +277,7 @@ export const getGroupAdmins = (participantes) => {
  * @param {Object} m 
  * @param {Boolean} hasParent */
 
-export const smsg = (conn, m, hasParent) => {
+export const smsg = (kim, m, hasParent) => {
     if (!m) return m
     let M = proto.WebMessageInfo
     let protocolMessageKey
@@ -309,7 +311,7 @@ export const smsg = (conn, m, hasParent) => {
         console.error(e)
         }
         if (m.mtype === 'ephemeralMessage') {
-            exports.smsg(sock, m.msg)
+            exports.smsg(kim, m.msg)
             m.mtype = m.msg.mtype
             m.msg = m.msg.msg
         }
