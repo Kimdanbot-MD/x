@@ -73,7 +73,7 @@ const isBotAdmins = m.isGroup ? groupAdmins.includes(numBot) : false
 const isGroupAdmins = m.isGroup ? groupAdmins.includes(userSender) : false
 const isBanned = m.isGroup ? blockList.includes(userSender) : false
 const isPremium = m.isGroup ? premium.includes(userSender) : false
-const who = m.quoted ? m.quoted.sender : m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender;
+const who = m.quoted ? m.quoted.sender : m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? kim.user.jid : m.sender;
 const thumb = ftkim
 const fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${userSender.split('@')[0]}:${userSender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
 const fake = { contextInfo: { forwardedNewsletterMessageInfo: { newsletterJid: '120363160031023229@newsletter', serverMessageId: '', newsletterName: 'texto bonis' }, mentionedJid: null, forwardingScore: 9999999, isForwarded: true, "externalAdReply": {"showAdAttribution": true, "containsAutoReply": true, "title": wm, "body": vs, "previewType": "PHOTO", thumbnail: ftkim, sourceUrl: redes}}}
@@ -146,7 +146,7 @@ if (m.chat.endsWith('broadcast')) return
 if (m.isBaileys) return
 let msgs = global.db.data.database
 if (!(budy.toLowerCase() in msgs)) return
-conn.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
+kim.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
 }
   
 // ═════════════𓊈『 REPORTE/ERRORS 』𓊉═════════════
