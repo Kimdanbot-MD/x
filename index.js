@@ -118,7 +118,7 @@ kim.ev.on('messages.upsert', async (chatUpdate) => {
         global.numBot = kim.user.id.split(":")[0] + "@s.whatsapp.net";
         global.numBot2 = kim.user.id;
         const m = smsg(kim, mek);
-        require("./kim")(kim, m, chatUpdate, mek, store);
+        require("./kim.js")(kim, m, chatUpdate, mek, store);
       } catch (e) {
         console.error(e)}}) 
       } catch (err) {
