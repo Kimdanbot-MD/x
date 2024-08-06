@@ -1,5 +1,4 @@
 // ═════════════𓊈『 IMPORTACIONES 』𓊉═════════════ 
-conn
 import { WaMessageStubType, areJidsSameUser, downloadContentFromMessage, generateWAMessageContent, generateWAMessageFromContent, generateWAMessage, prepareWAMessageMedia, relayMessage} from '@whiskeysockets/baileys'  
 import pino from "pino";
 import chalk from "chalk";
@@ -151,7 +150,7 @@ kim.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
   
 // ═════════════𓊈『 REPORTE/ERRORS 』𓊉═════════════
 let e = String(err) 
-conn.sendMessage("573173090446@s.whatsapp.net", { text: "Hola Creador/desarrollador, parece haber un error, por favor arreglarlo 🥲\n\n" + util.format(e), 
+kim.sendMessage("573173090446@s.whatsapp.net", { text: "Hola Creador/desarrollador, parece haber un error, por favor arreglarlo 🥲\n\n" + util.format(e), 
 contextInfo:{forwardingScore: 9999999, isForwarded: false }})
 process.on('uncaughtException', async (err) => {
 console.log('Caught exception: ', err)})}}}}
