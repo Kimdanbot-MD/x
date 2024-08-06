@@ -275,7 +275,7 @@ export const getGroupAdmins = (participantes) => {
  * @param {Object} m 
  * @param {Boolean} hasParent */
 
-export const smsg = (kim, m, hasParent) => {
+export const smsg = (sock, m, hasParent) => {
     if (!m) return m
     let M = proto.WebMessageInfo
     let protocolMessageKey
