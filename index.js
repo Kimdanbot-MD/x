@@ -119,7 +119,7 @@ sock.ev.on('messages.upsert', async (chatUpdate) => {
         global.numBot2 = sock.user.id;
         const m = smsg(sock, mek);
         import kim from "./kim.js";
-        kim(kim, m, chatUpdate, mek, store);       
+        kim(sock, m, chatUpdate, mek, store);       
       } catch (e) {
         console.error(e)}});
       } catch (err) {
