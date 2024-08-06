@@ -103,7 +103,7 @@ const isViewOnce = (type === 'viewOnceMessage')
 // ═════════════𓊈『 CONSOLA 』𓊉═════════════	
 if (m.message) {
 console.log(chalk.bold.magenta(' ༺  🍓  𝐊𝐢𝐦𝐝𝐚𝐧𝐁𝐨𝐭-𝐌𝐃 🍓 ༻'), 
-chalk.bold.cyanBright(`\n┏━━━━━━━━━━━━━━━━━━━━━━━━┅┅\n┃🏷️  +${conn.user.id.split("@")[0]}`), 
+chalk.bold.cyanBright(`\n┏━━━━━━━━━━━━━━━━━━━━━━━━┅┅\n┃🏷️  +${kim.user.id.split("@")[0]}`), 
 chalk.bold.yellow(`${lenguaje.Bio.fecha}`) + chalk.yellow(moment(t * 1000).tz(place).format('DD/MM/YY'),	
 chalk.bold.red(`${lenguaje.Bio.hora}`) + chalk.red(moment(t * 1000).tz(place).format('HH:mm:ss'),
 chalk.bold.magenta(`${lenguaje.Bio.usuario}`) + chalk.magenta(pushname) + '  ➜ ', gradient.rainbow(userSender), 
