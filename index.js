@@ -51,7 +51,7 @@ console.log(chalk.bold.cyanBright(`🌻  һᥱᥡᥡᥡᥡ 🌻  ٩(๑꒦ິȏ�
 
 const start = async() => {
 
-const kim = makeWASocket({
+const sock = makeWASocket({
     printQRInTerminal: opcion == '1' ? true : false,
     logger: pino({ level: 'silent' }),
     auth: {
