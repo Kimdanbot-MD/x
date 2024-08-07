@@ -11,7 +11,6 @@ import FileType from "file-type"
 import path from "path"
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
 import PhoneNumber from 'awesome-phonenumber'
-import {kim} from "../kim.js"
 import es from './idiomas/es.js' //Español 
 import en from './idiomas/en.js' //Ingles 
 
@@ -276,7 +275,7 @@ export const getGroupAdmins = (participantes) => {
  * @param {Object} m 
  * @param {Boolean} hasParent */
 
-export const smsg = (sock, m, hasParent) => {
+export const smsg = (kim, m, hasParent) => {
     if (!m) return m
     let M = proto.WebMessageInfo
     let protocolMessageKey
