@@ -11,6 +11,7 @@ import FileType from "file-type"
 import path from "path"
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
 import PhoneNumber from 'awesome-phonenumber'
+import {kim} from "../kim.js"
 import es from './idiomas/es.js' //Español 
 import en from './idiomas/en.js' //Ingles 
 
