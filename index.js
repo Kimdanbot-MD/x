@@ -70,7 +70,7 @@ const sock = makeWASocket({
     msgRetryCounterCache: new NodeCache(), //para mensaje de reintento, "mensaje en espera"
 })
 
-sock = false
+sock.isInit = false
 
 if (!fs.existsSync(`./auth/creds.json`)) 
 if (opcion === '2' && !sock.authState.creds.registered) {  
