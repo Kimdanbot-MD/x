@@ -24,17 +24,17 @@ let img18 = 'https://telegra.ph/file/ef3e7d09167b275637b16.png'
 let img19 = 'https://telegra.ph/file/fa1cd57d9c24c7e2ecc6c.png'
 let img20 = 'https://telegra.ph/file/359089392b1a81bdacff6.png'
 let img21 = 'https://telegra.ph/file/b319b674b4b3086c07c59.png'
-let img22 =  'https://telegra.ph/file/cdf3acc82facb0b55a94a.jpg'
-let img23 =  'https://telegra.ph/file/8b4015906ee1c6541269a.jpg'
-let img24 =  'https://telegra.ph/file/1ba2172c40767e58f0a0f.jpg'
-let img25 =  'https://telegra.ph/file/9e7ea03c787c841ba9cb7.jpg'
-global.fotos = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16, img18, img19, img20, img21, img22, img23, img24, img25]
+let img22 = 'https://telegra.ph/file/cdf3acc82facb0b55a94a.jpg'
+let img23 = 'https://telegra.ph/file/8b4015906ee1c6541269a.jpg'
+let img24 = 'https://telegra.ph/file/1ba2172c40767e58f0a0f.jpg'
+let img25 = 'https://telegra.ph/file/9e7ea03c787c841ba9cb7.jpg'
+export default const fotos = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16, img18, img19, img20, img21, img22, img23, img24, img25]
 
-let file = require.resolve(__filename)
+/*let file = path.resolve(__filename)
 fs.watchFile(file, () => {
 fs.unwatchFile(file)
 const fileName = path.basename(file)
 console.log(chalk.redBright(`Update'${__filename}'`))
 delete require.cache[file]
-require(file)
-})
+import(file)
+})*/
