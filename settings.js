@@ -59,7 +59,7 @@ vihangayt: 'https://vihangayt.me',
 erdwpe: 'https://api.erdwpe.com',
 xyroinee: 'https://api.xyroinee.xyz',
 nekobot: 'https://nekobot.xyz'
-},
+}
 export const APIKeys = {
 'https://api.xteam.xyz': `${keysxteam}`,
 'https://api.lolhuman.xyz': 'GataDios',
