@@ -1,4 +1,4 @@
-orimport chalk from "chalk"
+import chalk from "chalk"
 import path from 'path'
 import fs from "fs"
 import es from './Kim/idiomas/es.js' //Español 
