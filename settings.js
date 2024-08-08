@@ -75,11 +75,11 @@ global.APIKeys = {
 };
 
 // ═════════════𓊈『 LINKS 』𓊉═════════════ 
-global.md = 'https://github.com/Kimdanbot-MD/KimdanBot-MD'
-global.yt = 'https://youtube.com/@universobl?si=HeFdv4RaYDF9HAeX'
-global.tiktok = 'https://www.tiktok.com/@universo_yaoi_bl?_t=8iIlNrlJg1d&_r=1'
-global.fb = 'https://www.instagram.com/_universo.bl?igshid=OGQ5ZDc2ODk2ZA=='
-global.red = [md, yt, tiktok, fb]
+const md = 'https://github.com/Kimdanbot-MD/KimdanBot-MD'
+const yt = 'https://youtube.com/@universobl?si=HeFdv4RaYDF9HAeX'
+const tiktok = 'https://www.tiktok.com/@universo_yaoi_bl?_t=8iIlNrlJg1d&_r=1'
+const fb = 'https://www.instagram.com/_universo.bl?igshid=OGQ5ZDc2ODk2ZA=='
+const red = [md, yt, tiktok, fb]
 
 global.nna = 'https://whatsapp.com/channel/0029VaFFJab3QxS5sqmnXR3l' //canal
 global.nna2 = 'https://whatsapp.com/channel/0029VaNCiOMFSAtAQVOwA50y' //canal
