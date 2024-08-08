@@ -22,7 +22,7 @@ export default const aport = [
 ]
 
 // ═════════════𓊈『 IDIOMAS 』𓊉═════════════ 
-export default const place = 'America/Bogota' 
+export const default place = 'America/Bogota' 
 export default const lenguaje = es 
 export default const prefix = [`.`]
 
