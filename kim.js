@@ -1,4 +1,6 @@
 // ═════════════𓊈『 IMPORTACIONES 』𓊉═════════════ 
+import "./settings.js"
+import "./Kim/imagenes.js"
 import Baileys from '@whiskeysockets/baileys'  
 const { WaMessageStubType, areJidsSameUser, downloadContentFromMessage, generateWAMessageContent, generateWAMessageFromContent, generateWAMessage, prepareWAMessageMedia, relayMessage} = Baileys
 import pino from "pino";
