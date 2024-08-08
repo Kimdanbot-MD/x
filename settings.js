@@ -139,7 +139,7 @@ export const packname = "🍓 𝐊𝐢𝐦𝐝𝐚𝐧𝐁𝐨𝐭-𝐌𝐃 🍓
 export const author = "🍒𝐃𝐚𝐧𝐨𝐧𝐢𝐧𝐨🍒"
 export const vs = '𝟏.𝟎.𝟎'
 export const botNumberCode = "" //Ejemplo: +57
-export const phoneNumber = ""
+global.phoneNumber = ""
 
 // ═════════════𓊈『 LISTAS 』𓊉═════════════ 
 export const mods = []
