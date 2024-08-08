@@ -28,7 +28,7 @@ let img22 = 'https://telegra.ph/file/cdf3acc82facb0b55a94a.jpg'
 let img23 = 'https://telegra.ph/file/8b4015906ee1c6541269a.jpg'
 let img24 = 'https://telegra.ph/file/1ba2172c40767e58f0a0f.jpg'
 let img25 = 'https://telegra.ph/file/9e7ea03c787c841ba9cb7.jpg'
-export default const fotos = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16, img18, img19, img20, img21, img22, img23, img24, img25]
+export const fotos = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16, img18, img19, img20, img21, img22, img23, img24, img25]
 
 /*let file = path.resolve(__filename)
 fs.watchFile(file, () => {
