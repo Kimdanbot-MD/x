@@ -4,7 +4,7 @@ import fs from "fs"
 import es from './Kim/idiomas/es.js' //Español 
 import en from './Kim/idiomas/en.js' //Ingles 
 
-export const owner = [
+global.owner = [
 ["573234628903", "creador", true],
 ["573044062173"], 
 ["50685690440"],
