@@ -24,10 +24,10 @@ export const kim = async (sock, m, chatUpdate, mek, store) => { // Raíz "kim" p
 var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
 
 function KimR(list) {return list[Math.floor(list.length * Math.random())]}     
-export const ftkim = KimR(fotos)
-export const redes = KimR(red) 
-export const wha = KimR(wa) 
-export const canales = KimR(ca)
+const ftkim = KimR(fotos)
+const redes = KimR(red) 
+const wha = KimR(wa) 
+const canales = KimR(ca)
 
 // ═════════════𓊈『 ATRIBUTOS 』𓊉═════════════
 if (m.key.id.startsWith("BAE5")) return
