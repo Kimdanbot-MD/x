@@ -1,6 +1,6 @@
 // ═════════════𓊈『 IMPORTACIONES 』𓊉═════════════ 
-import {red, wa, ca} from "./settings.js"
-import {fotos} from "./Kim/imagenes.js"
+import "./settings.js"
+import "./Kim/imagenes.js"
 import Baileys from '@whiskeysockets/baileys'  
 const { WaMessageStubType, areJidsSameUser, downloadContentFromMessage, generateWAMessageContent, generateWAMessageFromContent, generateWAMessage, prepareWAMessageMedia, relayMessage} = Baileys
 import pino from "pino";
@@ -24,10 +24,10 @@ export const kim = async (sock, m, chatUpdate, mek, store) => { // Raíz "kim" p
 var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
 
 function KimR(list) {return list[Math.floor(list.length * Math.random())]}     
-const ftkim = KimR(fotos)
-const redes = KimR(red) 
-const wha = KimR(wa) 
-const canales = KimR(ca)
+global.ftkim = KimR(fotos)
+global.redes = KimR(red) 
+global.wha = KimR(wa) 
+global.canales = KimR(ca)
 
 // ═════════════𓊈『 ATRIBUTOS 』𓊉═════════════
 if (m.key.id.startsWith("BAE5")) return
