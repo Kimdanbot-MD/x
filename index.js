@@ -1,3 +1,4 @@
+sock
 import "./settings.js"
 import { PHONENUMBER_MCC, fetchLatestBaileysVersion, DisconnectReason, makeWASocket, makeInMemoryStore, useMultiFileAuthState, makeCacheableSignalKeyStore } from "@whiskeysockets/baileys";
 import { Boom } from "@hapi/boom";
@@ -70,10 +71,10 @@ const kim = makeWASocket({
     msgRetryCounterCache: new NodeCache(), //para mensaje de reintento, "mensaje en espera"
 })
 
-sock.isInit = false
+kim.isInit = false
 
 if (!fs.existsSync(`./auth/creds.json`)) 
-if (opcion === '2' && !sock.authState.creds.registered) {  
+if (opcion === '2' && !kim.authState.creds.registered) {  
 let addNumber
 if (!!phoneNumber) {
 addNumber = phoneNumber.replace(/[^0-9]/g, '')
@@ -94,7 +95,7 @@ rl.close()
 } 
 
 setTimeout(async () => {
-let codeBot = await sock.requestPairingCode(addNumber)
+let codeBot = await kim.requestPairingCode(addNumber)
 codeBot = codeBot?.match(/.{1,4}/g)?.join("-") || codeBot
 console.log(chalk.bold.white(chalk.bgMagenta(`(●'▽ '●)ゝ 🩷  ᥴ᥆ძіg᥆ ძᥱ ᥎іᥒᥴᥙᥣᥲᥴі᥆ᥒ 🩷 : `)), chalk.bold.white(chalk.white(codeBot)))
 }, 2000)
@@ -105,7 +106,7 @@ async function getMessage(key) {
     const msg = await store.loadMessage(key.remoteJid, key.id);
     return msg?.message }
   return { conversation: '𝐊𝐢𝐦𝐃𝐚𝐧𝐁𝐨𝐭-𝐌𝐃' }}
-sock.ev.on('messages.upsert', async (chatUpdate) => {
+kim.ev.on('messages.upsert', async (chatUpdate) => {
   try {
     chatUpdate.messages.forEach(async (mek) => {
       try {
@@ -113,19 +114,19 @@ sock.ev.on('messages.upsert', async (chatUpdate) => {
         if (!mek.message) return;
         mek.message = mek.message.ephemeralMessage?.message || mek.message;
         if (mek.key && mek.key.remoteJid === 'status@broadcast') return;
-        if (!sock.public && !mek.key.fromMe && chatUpdate.type === 'notify') return;
+        if (!kim.public && !mek.key.fromMe && chatUpdate.type === 'notify') return;
         if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) return;
         if (mek.key.id.startsWith('FatihArridho_')) return;
-        global.numBot = sock.user.id.split(":")[0] + "@s.whatsapp.net";
-        global.numBot2 = sock.user.id;
-        const m = smsg(sock, mek);
+        global.numBot = kim.user.id.split(":")[0] + "@s.whatsapp.net";
+        global.numBot2 = kim.user.id;
+        const m = smsg(kim, mek);
         dan(kim, dan, m, chatUpdate, mek, store);       
       } catch (e) {
         console.error(e)}});
       } catch (err) {
     console.error(err)}});
 
-sock.ev.on('messages.update', async (chatUpdate) => {
+kim.ev.on('messages.update', async (chatUpdate) => {
   for (const { key, update } of chatUpdate) {
     if (update.pollUpdates && key.fromMe) {
       const pollCreation = await getMessage(key);
@@ -134,16 +135,16 @@ sock.ev.on('messages.update', async (chatUpdate) => {
         const winningOption = pollUpdate.find(v => v.voters.length !== 0)?.name;
         if (!winningOption) return;
         const command = prefix + winningOption;
-        sock.appenTextMessage(command, chatUpdate)}}}});
+        kim.appenTextMessage(command, chatUpdate)}}}});
 
-store?.bind(sock.ev);
+store?.bind(kim.ev);
 	
-sock.ev.on('creds.update', saveCreds)
+kim.ev.on('creds.update', saveCreds)
 	
-sock.ev.on('connection.update', async (update) => {
+kim.ev.on('connection.update', async (update) => {
 const { connection, lastDisconnect, qr, isNewLogin } = update;
 
-if (isNewLogin) sock.isInit = true
+if (isNewLogin) kim.isInit = true
 if (connection == 'connecting') {
 console.log('iniciando...')
 
@@ -159,8 +160,7 @@ start();
 } else if (opcion == '1' && qr) {
 console.log(color('[SYS]', '#009FFF'),
 color(`\nescanea el codigo qr`, '#f12711'))
-} else if (connection == 'open') console.log('Kim es online.');
-	console.log(sock.user) 
+} else if (connection == 'open') console.log('Kim es online.'); 
 })
 }
 
