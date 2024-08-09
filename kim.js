@@ -49,7 +49,7 @@ const userSender = m.key.fromMe ? botnm : m.isGroup && m.key.participant.include
 const isCreator = global.owner.map(([numero]) => numero.replace(/[^\d\s().+:]/g, '').replace(/\s/g, '') + '@s.whatsapp.net').includes(userSender)
 const isOwner = isCreator || m.fromMe;
 const isMods = isOwner || global.mods.map((v) => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender);
-const itsMe = m.sender == kim.user.id ? true : false
+const itsMe = m.sender == sock.user.id ? true : false
 const text = args.join(" ")
 const quoted = m.quoted ? m.quoted : m
 const sender = m.key.fromMe ? botnm : m.isGroup ? m.key.participant : m.key.remoteJid
@@ -57,8 +57,8 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 const mime = (quoted.msg || quoted).mimetype || ''
 const qmsg = (quoted.msg || quoted)
 const isMedia = /image|video|sticker|audio/.test(mime)
-const numBot = kim.user.id.split(":")[0] + "@s.whatsapp.net"
-const numBot2 = kim.user.id
+const numBot = sock.user.id.split(":")[0] + "@s.whatsapp.net"
+const numBot2 = sock.user.id
 const mentions = []
 if (m.message[type].contextInfo) {
 if (m.message[type].contextInfo.mentionedJid) {
