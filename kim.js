@@ -44,7 +44,7 @@ const full_args = body.replace(command, '').slice(1).trim()
 const q = args.join(" ")
 let t = m.messageTimestamp
 const pushname = m.pushName || "Sin nombre"
-const botnm = kim.user.id.split(":")[0] + "@s.whatsapp.net"
+const botnm = kim.user.id//.split(":")[0] + "@s.whatsapp.net"
 const userSender = m.key.fromMe ? botnm : m.isGroup && m.key.participant.includes(":") ? m.key.participant.split(":")[0] + "@s.whatsapp.net" : m.key.remoteJid.includes(":") ? m.key.remoteJid.split(":")[0] + "@s.whatsapp.net" : m.key.fromMe ? botnm : m.isGroup ? m.key.participant : m.key.remoteJid
 const isCreator = global.owner.map(([numero]) => numero.replace(/[^\d\s().+:]/g, '').replace(/\s/g, '') + '@s.whatsapp.net').includes(userSender)
 const isOwner = isCreator || m.fromMe;
