@@ -160,6 +160,7 @@ start();
 console.log(color('[SYS]', '#009FFF'),
 color(`\nescanea el codigo qr`, '#f12711'))
 } else if (connection == 'open') console.log('Kim es online.');
+	console.log(sock.user) 
 })
 }
 
