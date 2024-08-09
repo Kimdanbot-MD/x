@@ -43,8 +43,6 @@ const full_args = body.replace(command, '').slice(1).trim()
 const q = args.join(" ")
 let t = m.messageTimestamp
 const pushname = m.pushName || "Sin nombre"
-	console.log(kim.user)
-/*
 const botnm = kim.user.id.split(":")[0] + "@s.whatsapp.net"
 const userSender = m.key.fromMe ? botnm : m.isGroup && m.key.participant.includes(":") ? m.key.participant.split(":")[0] + "@s.whatsapp.net" : m.key.remoteJid.includes(":") ? m.key.remoteJid.split(":")[0] + "@s.whatsapp.net" : m.key.fromMe ? botnm : m.isGroup ? m.key.participant : m.key.remoteJid
 const isCreator = global.owner.map(([numero]) => numero.replace(/[^\d\s().+:]/g, '').replace(/\s/g, '') + '@s.whatsapp.net').includes(userSender)
@@ -157,5 +155,5 @@ let e = String(err)
 kim.sendMessage("573173090446@s.whatsapp.net", { text: "Hola Creador/desarrollador, parece haber un error, por favor arreglarlo 🥲\n\n" + util.format(e), 
 contextInfo:{forwardingScore: 9999999, isForwarded: false }})
 process.on('uncaughtException', async (err) => {
-console.log('Caught exception: ', err)})}}}*/}
+console.log('Caught exception: ', err)})}}}}
  
