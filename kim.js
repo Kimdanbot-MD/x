@@ -20,7 +20,7 @@ for await(const chunk of stream) {
 buffer = Buffer.concat([buffer, chunk]) }  
 return buffer  
 }
-export const kim = async (sock, m, chatUpdate, mek, store) => { // Raíz "kim" para mensajes y argumentos
+export const kim = async (kim, sock, m, chatUpdate, mek, store) => { // Raíz "kim" para mensajes y argumentos
 var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
 
 function KimR(list) {return list[Math.floor(list.length * Math.random())]}     
