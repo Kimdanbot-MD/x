@@ -119,7 +119,7 @@ sock.ev.on('messages.upsert', async (chatUpdate) => {
         global.numBot = sock.user.id.split(":")[0] + "@s.whatsapp.net";
         global.numBot2 = sock.user.id;
         const m = smsg(sock, mek);
-        kim(sock, m, chatUpdate, mek, store);       
+        kim(kim, sock, m, chatUpdate, mek, store);       
       } catch (e) {
         console.error(e)}});
       } catch (err) {
