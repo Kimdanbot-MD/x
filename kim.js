@@ -18,8 +18,7 @@ const stream = await downloadContentFromMessage(mediakey, MediaType)
 let buffer = Buffer.from([])  
 for await(const chunk of stream) {  
 buffer = Buffer.concat([buffer, chunk]) }  
-return buffer 
-}     
+return buffer     
 export const kim = async (sock, m, chatUpdate, mek, store) => { // Raíz "kim" para mensajes y argumentos
 var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
 
@@ -44,7 +43,9 @@ const full_args = body.replace(command, '').slice(1).trim()
 const q = args.join(" ")
 let t = m.messageTimestamp
 const pushname = m.pushName || "Sin nombre"
-//const botnm = kim.user.id.split(":")[0] + "@s.whatsapp.net"
+	console.log(kim.user)
+/*
+const botnm = kim.user.id.split(":")[0] + "@s.whatsapp.net"
 const userSender = m.key.fromMe ? botnm : m.isGroup && m.key.participant.includes(":") ? m.key.participant.split(":")[0] + "@s.whatsapp.net" : m.key.remoteJid.includes(":") ? m.key.remoteJid.split(":")[0] + "@s.whatsapp.net" : m.key.fromMe ? botnm : m.isGroup ? m.key.participant : m.key.remoteJid
 const isCreator = global.owner.map(([numero]) => numero.replace(/[^\d\s().+:]/g, '').replace(/\s/g, '') + '@s.whatsapp.net').includes(userSender)
 const isOwner = isCreator || m.fromMe;
@@ -156,5 +157,5 @@ let e = String(err)
 kim.sendMessage("573173090446@s.whatsapp.net", { text: "Hola Creador/desarrollador, parece haber un error, por favor arreglarlo 🥲\n\n" + util.format(e), 
 contextInfo:{forwardingScore: 9999999, isForwarded: false }})
 process.on('uncaughtException', async (err) => {
-console.log('Caught exception: ', err)})}}}}
+console.log('Caught exception: ', err)})}}}*/}
  
