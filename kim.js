@@ -44,12 +44,12 @@ const full_args = body.replace(command, '').slice(1).trim()
 const q = args.join(" ")
 let t = m.messageTimestamp
 const pushname = m.pushName || "Sin nombre"
-const botnm = sock.user.id.split(":")[0] + "@s.whatsapp.net"
+const botnm = kim.user.id.split(":")[0] + "@s.whatsapp.net"
 const userSender = m.key.fromMe ? botnm : m.isGroup && m.key.participant.includes(":") ? m.key.participant.split(":")[0] + "@s.whatsapp.net" : m.key.remoteJid.includes(":") ? m.key.remoteJid.split(":")[0] + "@s.whatsapp.net" : m.key.fromMe ? botnm : m.isGroup ? m.key.participant : m.key.remoteJid
 const isCreator = global.owner.map(([numero]) => numero.replace(/[^\d\s().+:]/g, '').replace(/\s/g, '') + '@s.whatsapp.net').includes(userSender)
 const isOwner = isCreator || m.fromMe;
 const isMods = isOwner || global.mods.map((v) => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender);
-const itsMe = m.sender == sock.user.id ? true : false
+const itsMe = m.sender == kim.user.id ? true : false
 const text = args.join(" ")
 const quoted = m.quoted ? m.quoted : m
 const sender = m.key.fromMe ? botnm : m.isGroup ? m.key.participant : m.key.remoteJid
@@ -57,8 +57,8 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 const mime = (quoted.msg || quoted).mimetype || ''
 const qmsg = (quoted.msg || quoted)
 const isMedia = /image|video|sticker|audio/.test(mime)
-const numBot = sock.user.id.split(":")[0] + "@s.whatsapp.net"
-const numBot2 = sock.user.id
+const numBot = kim.user.id.split(":")[0] + "@s.whatsapp.net"
+const numBot2 = kim.user.id
 const mentions = []
 if (m.message[type].contextInfo) {
 if (m.message[type].contextInfo.mentionedJid) {
