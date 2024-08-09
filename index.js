@@ -1,4 +1,3 @@
-sock
 import "./settings.js"
 import { PHONENUMBER_MCC, fetchLatestBaileysVersion, DisconnectReason, makeWASocket, makeInMemoryStore, useMultiFileAuthState, makeCacheableSignalKeyStore } from "@whiskeysockets/baileys";
 import { Boom } from "@hapi/boom";
