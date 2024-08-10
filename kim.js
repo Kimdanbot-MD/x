@@ -7,7 +7,7 @@ import pino from "pino";
 import chalk from "chalk";
 import fs from "fs";
 import fetch from 'node-fetch'
-import { smsg, fetchBuffer, getBuffer, buffergif, getGroupAdmins, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, jsonformat, delay, format, logic, generateProfilePicture, parseMention, getRandom, msToTime, downloadMediaMessage } from "./Kim/fuctions.js"
+import { smsg, fetchBuffer, getBuffer, buffergif, getGroupAdmins, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, jsonformat, format, logic, generateProfilePicture, parseMention, getRandom, msToTime, downloadMediaMessage } from "./Kim/fuctions.js"
 
 const msgs = (message) => {   
 if (message.length >= 10) { 
