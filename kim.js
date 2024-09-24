@@ -10,7 +10,6 @@ import fetch from 'node-fetch'
 import moment from 'moment-timezone' 
 import gradient from 'gradient-string'
 import { exec, spawn, execSync } from "child_process"
-import fetch from 'node-fetch'
 import axios from 'axios'
 
 //import { smsg, fetchBuffer, getBuffer, buffergif, getGroupAdmins, formatp, tanggal, formatDate, getTime, isUrl, sleep, delay, clockString, runtime, fetchJson, jsonformat, format, logic, generateProfilePicture, parseMention, getRandom, msToTime, downloadMediaMessage } from "./Kim/fuctions.js"
