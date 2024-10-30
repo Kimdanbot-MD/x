@@ -26,14 +26,7 @@ const start = async () => {
     });
 
     const { kim, store } = baileysConnection;
-    const eventHandler = new EventHandler(kim, store);
     const connectionHandler = new ConnectionHandler(kim, store, start);
-
-    // Registrar los eventos
-    kim.ev.on('connection.update', connectionHandler.onConnectionUpdate);
-    kim.ev.on('messages.upsert', eventHandler.onMessageUpsert);
-    kim.ev.on('messages.update', eventHandler.onMessagesUpdate);
-    kim.ev.on('group-participants.update', eventHandler.onGroupParticipantsUpdate);
 
     store?.bind(kim.ev);
     kim.ev.on('creds.update', saveCreds);
