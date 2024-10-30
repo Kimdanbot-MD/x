@@ -1,9 +1,9 @@
 import { fetchLatestBaileysVersion } from "@whiskeysockets/baileys";
-import { config } from './src/utils/config.js';
-import { BaileysConnection } from './src/core/BaileysConnection.js';
-import { EventHandler } from './src/core/EventHandler.js';
-import { ConnectionHandler } from './src/handlers/connectionHandler.js'
-import { AuthHandler } from './src/handlers/authHandler.js';
+import { config } from './Kim/config.js';
+import { BaileysConnection } from './Kim/core/BaileysConnection.js';
+import { EventHandler } from './Kim/core/EventHandler.js';
+import { ConnectionHandler } from './Kim/handlers/connectionHandler.js'
+import { AuthHandler } from './Kim/handlers/authHandler.js';
 import readline from "readline";
 import chalk from "chalk";
 import fs from "fs";
