@@ -4,6 +4,7 @@ import { BaileysConnection } from './Kim/core/BaileysConnection.js';
 import { EventHandler } from './Kim/core/EventHandler.js';
 import { ConnectionHandler } from './Kim/handlers/connectionHandler.js'
 import { AuthHandler } from './Kim/handlers/authHandler.js';
+import { EventHandler } from './Kim/core/EventHandler.js';
 import readline from "readline";
 import chalk from "chalk";
 import fs from "fs";
@@ -26,7 +27,14 @@ const start = async () => {
     });
 
     const { kim, store } = baileysConnection;
+    const eventHandler = new EventHandler(kim, store, start);
     const connectionHandler = new ConnectionHandler(kim, store, start);
+
+        // Registrar los eventos
+    kim.ev.on('connection.update', eventHandler.onConnectionUpdate);
+    kim.ev.on('messages.upsert', eventHandler.onMessageUpsert);
+    kim.ev.on('messages.update', eventHandler.onMessagesUpdate);
+    kim.ev.on('group-participants.update', eventHandler.onGroupParticipantsUpdate); 
 
     store?.bind(kim.ev);
     kim.ev.on('creds.update', saveCreds);
