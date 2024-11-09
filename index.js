@@ -1,5 +1,4 @@
 import { fetchLatestBaileysVersion } from "@whiskeysockets/baileys";
-import { config } from './Kim/config.js';
 import { BaileysConnection } from './Kim/core/BaileysConnection.js';
 import { EventHandler } from './Kim/core/EventHandler.js';
 import { ConnectionHandler } from './Kim/handlers/connectionHandler.js'
