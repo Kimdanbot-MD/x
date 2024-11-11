@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/Kimdanbot-MD/x#readme",
   "dependencies": {
-    "@adiwajshing/baileys": "^4.4.0",
+    "@whiskeysockets/baileys": "^6.7.4",
     "@bochilteam/scraper": "^2.0.0",
     "awesome-phonenumber": "^2.64.0",
     "axios": "^1.1.3",
