@@ -1,23 +1,18 @@
-import { fetchLatestBaileysVersion } from "@whiskeysockets/baileys";
+import { fetchLatestBaileysVersion, useMultiFileAuthState } from "@whiskeysockets/baileys";
 import { BaileysConnection } from './Kim/core/BaileysConnection.js';
 import { EventHandler } from './Kim/core/EventHandler.js';
 import { ConnectionHandler } from './Kim/handlers/connectionHandler.js'
 import { AuthHandler } from './Kim/handlers/authHandler.js';
-import { EventHandler } from './Kim/core/EventHandler.js';
 import readline from "readline";
-import chalk from "chalk";
-import fs from "fs";
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
 const question = (text) => new Promise((resolve) => rl.question(text, resolve))
 
 const start = async () => {
   try {
-    // Obtener la opción de conexión del usuario
     const authHandler = new AuthHandler();
     const opcion = await authHandler.obtenerOpcionConexion();
 
-    // Inicializar la conexión con Baileys
     const baileysConnection = new BaileysConnection({
       authPath: 'auth',
       printQRInTerminal: opcion === '1',
@@ -25,15 +20,15 @@ const start = async () => {
       version: (await fetchLatestBaileysVersion()).version,
     });
 
-    const { kim, store } = baileysConnection;
+    const { kim, store } = await baileysConnection.connect();
+    const { saveCreds } = await useMultiFileAuthState('auth');
     const eventHandler = new EventHandler(kim, store, start);
     const connectionHandler = new ConnectionHandler(kim, store, start);
 
-        // Registrar los eventos
-    kim.ev.on('connection.update', eventHandler.onConnectionUpdate);
+    kim.ev.on('connection.update', connectionHandler.onConnectionUpdate);
     kim.ev.on('messages.upsert', eventHandler.onMessageUpsert);
     kim.ev.on('messages.update', eventHandler.onMessagesUpdate);
-    kim.ev.on('group-participants.update', eventHandler.onGroupParticipantsUpdate); 
+    kim.ev.on('group-participants.update', eventHandler.onGroupParticipantsUpdate);
 
     store?.bind(kim.ev);
     kim.ev.on('creds.update', saveCreds);
@@ -42,4 +37,5 @@ const start = async () => {
     console.error('Error al iniciar el bot:', error);
   }
 };
+
 start();
