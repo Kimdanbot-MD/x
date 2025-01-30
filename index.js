@@ -1,9 +1,9 @@
 import { fetchLatestBaileysVersion, useMultiFileAuthState } from "@whiskeysockets/baileys";
-/*import { BaileysConnection } from './Kim/core/BaileysConnection.js';
+import { BaileysConnection } from './Kim/core/BaileysConnection.js';
 import { EventHandler } from './Kim/core/EventHandler.js';
 import { ConnectionHandler } from './Kim/core/connectionHandler.js'
 import { AuthHandler } from './Kim/core/authHandler.js';
-*/import readline from "readline";
+import readline from "readline";
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
 const question = (text) => new Promise((resolve) => rl.question(text, resolve))
