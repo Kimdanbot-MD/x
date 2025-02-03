@@ -1,4 +1,4 @@
-import { MessageHandler } from "../Kim/modules/messageHandler.js";
+import { MessageHandler } from "../modules/messageHandler.js";
 import { ConnectionHandler } from "./connectionHandler.js";
 import { GroupHandler } from "../Kim/modules/groupHandler.js";
 import { ErrorHandler } from "../Kim/modules/errorHandler.js";
