@@ -57,7 +57,7 @@ ${chalk.bold.magentaBright('---> ')}`);
       });
       if (opcion === '2') {
                 if (!fs.existsSync(`./auth/creds.json`)) {
-                    if (!kim.authState.creds.registered) { // Usa kim aquí
+                    if (!kim.authState.creds.registered) { 
                         let addNumber;
                         if (!!phoneNumber) { // Asegúrate de que 'phoneNumber' esté definida o eliminada si no la usas
                             addNumber = phoneNumber.replace(/[^0-9]/g, '');
