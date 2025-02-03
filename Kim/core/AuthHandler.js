@@ -55,48 +55,48 @@ ${chalk.bold.magentaBright('---> ')}`);
           console.log(chalk.green('Connection Opened!'));
         }
       });
-      if (opcion === '2') { // Opción 2: Código de 8 dígitos
-        if (!fs.existsSync(`./auth/creds.json`)) {
-          if (!sock.authState.creds.registered) {
-            let addNumber;
-            if (!!phoneNumber) {
-              addNumber = phoneNumber.replace(/[^0-9]/g, '');
-              if (!Object.keys(PHONENUMBER_MCC).some(v => addNumber.startsWith(v))) {
-                console.log(chalk.bgBlack(chalk.bold.redBright(`\n🍓  (≡^∇^≡) ⍴᥆r𝖿іs іᥒ𝗍r᥆ძᥙzᥴᥲ sᥙ ᥒᥙ́mᥱr᥆ ძᥱ ᥕһᥲ𝗍sᥲ⍴⍴. 🍓\n\n${chalk.bold.yellowBright("🫐  ⍴᥆r ᥱȷᥱm⍴ᥣ᥆ (〃∀〃)ゞ🫐\n    ➥ +57 316 1407118")}\n`)));
-          process.exit(0);
-              }
-            } else {
-              while (true) {
-                addNumber = await question(chalk.bgBlack(chalk.bold.greenBright(`\n  (≡^∇^≡) ⍴h́᥆r𝖿іs іᥒ𝗍r᥆ძᥙzᥴᥲ sᥙ ᥒUh́mᥱr᥆ ძᥱ ᥕһh́ᥲ𝗍sᥲ⍴⍴. \n\n${chalk.bold.yellowBright("🫐  ⍴h́᥆r ᥱȷᥱm⍴ᥣ᥆ (〃∀〃)ゞ🫐\n    ➥ +57 316 1407118")}\n`)));
-                addNumber = addNumber.replace(/[^0-9]/g, '');
+      if (opcion === '2') {
+                if (!fs.existsSync(`./auth/creds.json`)) {
+                    if (!kim.authState.creds.registered) { // Usa kim aquí
+                        let addNumber;
+                        if (!!phoneNumber) { // Asegúrate de que 'phoneNumber' esté definida o eliminada si no la usas
+                            addNumber = phoneNumber.replace(/[^0-9]/g, '');
+                            if (!Object.keys(PHONENUMBER_MCC).some(v => addNumber.startsWith(v))) {
+                                console.log(chalk.bgBlack(chalk.bold.redBright(`\n🍓  (≡^∇^≡) ⍴᥆r𝖿іs іᥒ𝗍r᥆ძᥙzᥴᥲ sᥙ ᥒUh́mᥱr᥆ ძᥱ ᥕһh́ᥲ𝗍sᥲ⍴⍴, rᥱᥴᥙᥱrძᥲ ᥱm⍴ᥱzᥲr ᥴh́ძіg᥆ ძᥱᥣ ⍴h́ᥲіs. \n\n${chalk.bold.yellowBright("🫐  ⍴h́᥆r ᥱȷᥱm⍴ᥣ᥆ (〃∀〃)ゞ🫐\n  ➥ +57 316 1407118")}\n`)));
+                                process.exit(0);
+                            }
+                        } else {
+                            while (true) {
+                                addNumber = await question(chalk.bgBlack(chalk.bold.greenBright(`\n  (≡^∇^≡) ⍴h́᥆r𝖿іs іᥒ𝗍r᥆ძᥙzᥴᥲ sUh́mᥱr᥆ ძᥱ ᥕһh́ᥲ𝗍sᥲ⍴⍴. \n\n${chalk.bold.yellowBright("🫐  ⍴h́᥆r ᥱȷᥱm⍴ᥣ᥆ (〃∀〃)ゞ🫐\n    ➥ +57 316 1407118")}\n`)));
+                                addNumber = addNumber.replace(/[^0-9]/g, '');
 
-                if (addNumber.match(/^\d+$/) && Object.keys(PHONENUMBER_MCC).some(v => addNumber.startsWith(v))) {
-                  break;
-                } else {
-                  console.log(chalk.bold.redBright("🍨  ⍴᥆r𝖿ᥲs rᥱᥴᥙᥱrძᥲ іᥒ𝗍r᥆ძᥙᥴіr ᥱᥣ ᥴ᥆ძіg᥆ ძᥱᥣ ⍴ᥲіs. (◞ ᜊ ◟ㆀ) 🍨"));
-          }
-              }
-              rl.close();
+                                if (addNumber.match(/^\d+$/) && Object.keys(PHONENUMBER_MCC).some(v => addNumber.startsWith(v))) {
+                                    break;
+                                } else {
+                                    console.log(chalk.bold.redBright("  ⍴h́᥆r𝖿h́ᥲs rᥱᥴUh́ᥱrძᥲ іᥒ𝗍r᥆ძᥙzᥴіr ᥱᥣ ᥴh́ძіg᥆ ძᥱᥣ ⍴h́ᥲіs. (◞ ᜊ ◟ㆀ) "));
+                                }
+                            }
+                            rl.close();
+                        }
+
+                        try {
+                            let codeBot = await kim.requestPairingCode(addNumber); // Usa kim aquí
+                            codeBot = codeBot?.match(/.{1,4}/g)?.join("-") || codeBot;
+                            console.log(chalk.bold.white(chalk.bgMagenta(`(●'▽ '●)ゝ 🩷  ᥴh́ძіg᥆ ძᥱ ᥎іᥒᥴᥙᥣᥲᥴіh́ᥒ 🩷 : `)), chalk.bold.white(chalk.white(codeBot))); // Corrige la variable a codeBot
+                        } catch (error) {
+                            console.error(chalk.red('Error al solicitar el código de emparejamiento:', error));
+                            return;
+                        }
+                    }
+                }
+
+                return { kim, store };
+
             }
 
-            try {
-              let codeBot = await sock.requestPairingCode(addNumber);
-              codeBot = codeBot?.match(/.{1,4}/g)?.join("-") || codeBot;
-              console.log(chalk.bold.white(chalk.bgMagenta(`(●'▽ '●)ゝ 🩷  ᥴ᥆ძіg᥆ ძᥱ ᥎іᥒᥴᥙᥣᥲᥴі᥆ᥒ 🩷 : `)), chalk.bold.white(chalk.white(code)));
         } catch (error) {
-              console.error(chalk.red('Error al solicitar el código de emparejamiento:', error));
-              return;
-            }
-          }
-        }
-
-      return { kim, store };
-
-    } 
-    } catch (error) {
-      console.error(chalk.red('Error en la autenticación:', error));
-      rl.close();
-      return;
-    }
-  }
-} 
+            console.error(chalk.red('Error en la autenticación:', error));
+            rl.close();
+            return;
+        } }}
+                    
