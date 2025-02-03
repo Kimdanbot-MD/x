@@ -1,4 +1,4 @@
-import makeWASocket, { makeInMemoryStore, useMultiFileAuthState, makeCacheableSignalKeyStore } from '@whiskeysockets/baileys';
+import {makeWASocket, makeInMemoryStore, useMultiFileAuthState, makeCacheableSignalKeyStore } from '@whiskeysockets/baileys';
 import pino from 'pino';
 
 export class BaileysConnection {
