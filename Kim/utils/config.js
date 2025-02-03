@@ -1,8 +1,8 @@
 import chalk from "chalk"
 import path from 'path'
 import fs from "fs"
-import es from './Kim/idiomas/es.js' //Español 
-import en from './Kim/idiomas/en.js' //Ingles 
+import es from '../idiomas/es.js' //Español 
+import en from '../idiomas/en.js' //Ingles 
 
 global.owner = [
 ["573234628903", "creador", true],
