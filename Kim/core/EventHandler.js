@@ -8,7 +8,7 @@ export class EventHandler {
     this.kim = kim;
     this.store = store;
     this.start = start;
-    this.commandHandler = new CommandHandler(kim);
+    //this.commandHandler = new CommandHandler(kim);
     this.groupHandler = new GroupHandler(kim);
     this.messageHandler = new MessageHandler(kim, store, this.commandHandler);
     this.errorHandler = new ErrorHandler(kim);
