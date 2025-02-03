@@ -4,6 +4,7 @@ import { EventHandler } from './Kim/core/EventHandler.js';
 import { ConnectionHandler } from './Kim/core/ConnectionHandler.js'
 import { AuthHandler } from './Kim/core/AuthHandler.js';
 import readline from "readline";
+const methodCodeQR = process.argv.includes("qr")
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
 const question = (text) => new Promise((resolve) => rl.question(text, resolve))
