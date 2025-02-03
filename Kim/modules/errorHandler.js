@@ -1,4 +1,4 @@
-import { config } from "../utils/config.js"; 
+import '../utils/config.js' 
 import util from 'util'; 
 
 export class ErrorHandler {
