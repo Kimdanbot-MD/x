@@ -92,6 +92,7 @@ ${chalk.bold.magentaBright('---> ')}`);
 
       return { kim, store };
 
+    } 
     } catch (error) {
       console.error(chalk.red('Error en la autenticación:', error));
       rl.close();
