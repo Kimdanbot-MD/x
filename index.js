@@ -15,8 +15,8 @@ const start = async () => {
 
         const baileysConnection = new BaileysConnection({
             authPath: 'auth',
-            printQRInTerminal: opcion === '1', // Usa la opción para QR
-            browser: opcion === '1' ? ['KimdanBot-MD', 'Safari', '1.0.0'] : ["Ubuntu", "Edge", "20.0.04"],
+            printQRInTerminal: opcion == '1' ? true : methodCodeQR ? true : false,
+            browser: opcion == '1' ? ['KimdanBot-MD', 'Safari', '1.0.0'] : methodCodeQR ? ['KimdanBot-MD', 'Safari', '1.0.0'] : ["Ubuntu", "Edge", "20.0.04"],
             version: (await fetchLatestBaileysVersion()).version,
             opcion: opcion // Pasa la opción a BaileysConnection
         });
