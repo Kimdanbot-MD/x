@@ -1,7 +1,7 @@
 import { MessageHandler } from "../modules/messageHandler.js";
 import { ConnectionHandler } from "./connectionHandler.js";
-import { GroupHandler } from "../Kim/modules/groupHandler.js";
-import { ErrorHandler } from "../Kim/modules/errorHandler.js";
+import { GroupHandler } from "../modules/groupHandler.js";
+import { ErrorHandler } from "../modules/errorHandler.js";
 
 export class EventHandler {
   constructor(kim, store, start) {
