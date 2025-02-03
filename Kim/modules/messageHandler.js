@@ -1,8 +1,8 @@
-import { getGroupAdmins, isUrl, sleep, generateProfilePicture, parseMention, getRandom } from "../Kim/utils/fuctions.js";
+import { getGroupAdmins, isUrl, sleep, generateProfilePicture, parseMention, getRandom } from "../utils/fuctions.js";
 import moment from 'moment-timezone';
 import chalk from "chalk";
 import gradient from 'gradient-string';
-import { CommandHandler } from "../Kim/core/CommandHandler.js";
+import { CommandHandler } from "../core/CommandHandler.js";
 
 export class MessageHandler {
   constructor(kim, store) {
