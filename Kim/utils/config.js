@@ -4,7 +4,6 @@ import fs from "fs"
 import es from '../idiomas/es.js' //Español 
 import en from '../idiomas/en.js' //Ingles 
 
-export const config = {
 global.owner = [
 ["573234628903", "creador", true],
 ["573044062173"], 
@@ -102,4 +101,3 @@ global.blockList = []
 // ═════════════𓊈『 NIVELES 』𓊉═════════════ 
 global.multiplier = 90 // Cuanto más alto, más difícil subir de nivel 
 global.maxwarn = '4' // máxima advertencias 
-}
