@@ -51,8 +51,7 @@ export class MessageHandler {
         chalk.bold.red(`${lenguaje.Bio.hora}`) + chalk.red(moment(m.messageTimestamp * 1000).tz(place).format('HH:mm:ss')),
         chalk.bold.magenta(`${lenguaje.Bio.usuario}`) + chalk.magenta(pushname) + '  ➜ ', gradient.rainbow(userSender)),
         m.isGroup ? chalk.bold.yellow(`${lenguaje.Bio.grupo}`) + chalk.yellow(groupName) + '  ❥ ' : chalk.bold.yellow(`${lenguaje.Bio.priv}`),
-        chalk.bold.cyanBright('\n┃') + chalk.bold.white(`${lenguaje.Bio.mensaje}${this.msgs(m.text)}`) + chalk.bold.cyanBright(`\n┗━━━━━━━━━━━━━━━━━━━━━━━━┅┅\n`)
-      );
+        chalk.bold.cyanBright('\n┃') + chalk.bold.white(`${lenguaje.Bio.mensaje}${this.msgs(m.text)}`) + chalk.bold.cyanBright(`\n┗━━━━━━━━━━━━━━━━━━━━━━━━┅┅\n`);
     }
   }
 
