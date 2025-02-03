@@ -1,5 +1,5 @@
 import { MessageHandler } from "../modules/messageHandler.js";
-import { ConnectionHandler } from "./connectionHandler.js";
+import { ConnectionHandler } from "./ConnectionHandler.js";
 import { GroupHandler } from "../modules/groupHandler.js";
 import { ErrorHandler } from "../modules/errorHandler.js";
 
