@@ -1,102 +1,57 @@
 import readline from "readline";
 import chalk from "chalk";
-import { BaileysConnection } from "../core/BaileysConnection.js";
-import { fetchLatestBaileysVersion } from "@whiskeysockets/baileys";
-
-const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-const question = (text) => new Promise((resolve) => rl.question(text, resolve));
 
 export class AuthHandler {
-  async obtenerOpcionConexion() {
-    let opcion;
-    do {
-      let lineM = '★∻∹⋰⋰ ☆∻∹⋰⋰ ★∻∹⋰⋰ ☆∻∹⋰⋰★∻∹⋰⋰ ☆∻∹⋰⋰'
-      let linen = '✄ ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈'
-      opcion = await question(`\n\n${lineM}\n
-     ${chalk.blue.bgBlue.bold.cyan('🪷  mᥱ́𝗍᥆ძ᥆ ძᥱ ᥎іᥒᥴᥙᥣᥲᥴі᥆ᥒ 🪷 ')}\n
+    constructor(rlInstance) {
+        this.rl = rlInstance; // Utiliza la instancia de readline proporcionada para la interacción con el usuario.
+        this.question = (text) => new Promise((resolve) => this.rl.question(text, resolve));
+    }
+
+    // Muestra un menú al usuario y obtiene la opción de conexión (QR o código de 8 dígitos).
+    async obtenerOpcionConexion() {
+        let opcion;
+        do {
+            // Lógica del menú visual (se mantiene la provista por el usuario)
+            let lineM = '★∻∹⋰⋰ ☆∻∹⋰⋰ ★∻∹⋰⋰ ☆∻∹⋰⋰★∻∹⋰⋰ ☆∻∹⋰⋰';
+            let linen = '✄ ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈';
+            opcion = await this.question(`\n\n${lineM}\n
+      ${chalk.blue.bgBlue.bold.cyan('🪷  mᥱ́𝗍᥆ძ᥆ ძᥱ ᥎іᥒᥴᥙᥣᥲᥴі᥆ᥒ 🪷 ')}\n
 ${lineM}\n
-  ${chalk.blueBright('🎀 ꒷︶꒥‧˚૮꒰۵•▴•۵꒱ა‧˚꒷︶꒥🎀')}\n
-${chalk.blueBright(linen)}\n   
-${chalk.green.bgMagenta.bold.yellow('🌟  һ᥆ᥣᥲ, һᥱrm᥆s᥊, ¿ᥴ᥆m᥆ 𝗊ᥙіᥱrᥱs ᥴ᥆ᥒᥱᥴ𝗍ᥲr𝗍ᥱ? 🌟 ')}\n
-${chalk.bold.redBright('🍓  ▷ ᥱᥣᥱᥴᥴі᥆ᥒ ➊ :')} ${chalk.greenBright('ᥙsᥲ ᥙᥒ ᥴ᥆ძіg᥆ 🆀 🆁 .')}
-${chalk.bold.redBright('🧸  ▷ ᥱᥣᥱᥴᥴі᥆ᥒ ➋ :')} ${chalk.greenBright('ᥙsᥲ ᥙᥒ ᥴ᥆ძіg᥆ ძᥱ 8 ძіgі𝗍᥆s.')}\n
-${chalk.blueBright(linen)}\n   
+  ${chalk.blueBright('🎀 ꒷︶꒥‧˚૮꒰۵•▴•۵꒱ა‧˚꒷︶꒥🎀')}\n
+${chalk.blueBright(linen)}\n   
+${chalk.green.bgMagenta.bold.yellow('🌟  һ᥆ᥣᥲ, һᥱrm᥆s᥊, ¿ᥴ᥆m᥆ 𝗊ᥙіᥱrᥱs ᥴ᥆ᥒᥱᥴ𝗍ᥲr𝗍ᥱ? 🌟 ')}\n
+${chalk.bold.redBright('🍓  ▷ ᥱᥣᥱᥴᥴі᥆ᥒ ➊ :')} ${chalk.greenBright('ᥙsᥲ ᥙᥒ ᥴ᥆ძіg᥆ 🆀 🆁 .')}
+${chalk.bold.redBright('🧸  ▷ ᥱᥣᥱᥴᥴі᥆ᥒ ➋ :')} ${chalk.greenBright('ᥙsᥲ ᥙᥒ ᥴ᥆ძіg᥆ ძᥱ 8 ძіgі𝗍᥆s.')}\n
+${chalk.blueBright(linen)}\n   
 ${chalk.italic.magenta('🍄 ¿𝗊ᥙᥱ́ ᥱᥣᥱᥴᥴі᥆ᥒ ᥱᥣᥱgіs𝗍ᥱ? ⍴᥆r𝖿іs ᥱsᥴrіᑲᥱ')}
 ${chalk.italic.magenta('s᥆ᥣ᥆ ᥱᥣ ᥒᥙ́mᥱr᥆ ძᥱ ᥣᥲ ᥱᥣᥱᥴᥴі᥆ᥒ. 🍄')}\n
 ${chalk.bold.magentaBright('---> ')}`);
 
-      if (!/^[1-2]$/.test(opcion)) {
-        console.log(chalk.bold.cyanBright(`🌻  һᥱᥡᥡᥡᥡ 🌻  ٩(๑꒦ິȏ꒦ິ๑)۶ \n\n${chalk.bold.redBright(`🌸  ᥒ᥆ sᥱ ⍴ᥱrmі𝗍ᥱᥒ mᥲ́s ᥒᥙmᥱr᥆s᥆s ᥲ⍴ᥲr𝗍ᥱ ძᥱ ${chalk.bold.greenBright("➊")} ᥆ ${chalk.bold.greenBright("➋")} 🌸\n🌼  𝗍ᥲm⍴᥆ᥴ᥆ ᥣᥱ𝗍rᥲs ᥒі sіmᑲ᥆ᥣ᥆s ᥱs⍴ᥱᥴіᥲᥣᥱs. (╥﹏╥) 🌼`)}\n\n${chalk.bold.yellowBright("🪻  ♡ ´･ღ ･`♡ 𝗍і⍴ 🪻 : 🌺  ᥴ᥆⍴іᥲ 𝗍ᥙ ᥒᥙ́mᥱr᥆ ძᥱsძᥱ ᥣᥲ ᥲ⍴⍴\n ძᥱ ᥕһᥲ𝗍sᥲ⍴⍴ ᥡ ⍴ᥱgᥲᥣ᥆ ᥱᥒ ᥣᥲ ᥴ᥆ᥒs᥆ᥣᥲ. 🌺")}`))
-      }
-    } while (!/^[1-2]$/.test(opcion));
-
-    return opcion;
-  }
-
-  async iniciarAutenticacion(opcion) {
-    try {
-      const { version } = await fetchLatestBaileysVersion();
-      const baileysConnection = new BaileysConnection({
-        authPath: 'auth',
-        printQRInTerminal: opcion === '1',
-        browser: ['KimdanBot-MD', 'Safari', version], 
-        version, 
-      });
-
-      const { kim, store } = baileysConnection;
-
-      kim.ev.on('connection.update', (update) => {
-        const { connection, lastDisconnect } = update;
-        console.log(chalk.yellow('Connection Update:', connection));
-        if (connection === 'close') {
-          const shouldReconnect = lastDisconnect?.error?.output?.statusCode !== 409;
-          console.log(chalk.red('Connection Closed. Reconnecting:', shouldReconnect));
-        } else if (connection === 'open') {
-          console.log(chalk.green('Connection Opened!'));
-        }
-      });
-      if (opcion === '2') {
-                if (!fs.existsSync(`./auth/creds.json`)) {
-                    if (!kim.authState.creds.registered) { 
-                        let addNumber;
-                        if (!!phoneNumber) { // Asegúrate de que 'phoneNumber' esté definida o eliminada si no la usas
-                            addNumber = phoneNumber.replace(/[^0-9]/g, '');
-                            if (!Object.keys(PHONENUMBER_MCC).some(v => addNumber.startsWith(v))) {
-                                console.log(chalk.bgBlack(chalk.bold.redBright(`\n🍓  (≡^∇^≡) ⍴᥆r𝖿іs іᥒ𝗍r᥆ძᥙzᥴᥲ sᥙ ᥒUh́mᥱr᥆ ძᥱ ᥕһh́ᥲ𝗍sᥲ⍴⍴, rᥱᥴᥙᥱrძᥲ ᥱm⍴ᥱzᥲr ᥴh́ძіg᥆ ძᥱᥣ ⍴h́ᥲіs. \n\n${chalk.bold.yellowBright("🫐  ⍴h́᥆r ᥱȷᥱm⍴ᥣ᥆ (〃∀〃)ゞ🫐\n  ➥ +57 316 1407118")}\n`)));
-                                process.exit(0);
-                            }
-                        } else {
-                            while (true) {
-                                addNumber = await question(chalk.bgBlack(chalk.bold.greenBright(`\n  (≡^∇^≡) ⍴h́᥆r𝖿іs іᥒ𝗍r᥆ძᥙzᥴᥲ sUh́mᥱr᥆ ძᥱ ᥕһh́ᥲ𝗍sᥲ⍴⍴. \n\n${chalk.bold.yellowBright("🫐  ⍴h́᥆r ᥱȷᥱm⍴ᥣ᥆ (〃∀〃)ゞ🫐\n    ➥ +57 316 1407118")}\n`)));
-                                addNumber = addNumber.replace(/[^0-9]/g, '');
-
-                                if (addNumber.match(/^\d+$/) && Object.keys(PHONENUMBER_MCC).some(v => addNumber.startsWith(v))) {
-                                    break;
-                                } else {
-                                    console.log(chalk.bold.redBright("  ⍴h́᥆r𝖿h́ᥲs rᥱᥴUh́ᥱrძᥲ іᥒ𝗍r᥆ძᥙzᥴіr ᥱᥣ ᥴh́ძіg᥆ ძᥱᥣ ⍴h́ᥲіs. (◞ ᜊ ◟ㆀ) "));
-                                }
-                            }
-                            rl.close();
-                        }
-
-                        try {
-                            let codeBot = await kim.requestPairingCode(addNumber); // Usa kim aquí
-                            codeBot = codeBot?.match(/.{1,4}/g)?.join("-") || codeBot;
-                            console.log(chalk.bold.white(chalk.bgMagenta(`(●'▽ '●)ゝ 🩷  ᥴh́ძіg᥆ ძᥱ ᥎іᥒᥴᥙᥣᥲᥴіh́ᥒ 🩷 : `)), chalk.bold.white(chalk.white(codeBot))); // Corrige la variable a codeBot
-                        } catch (error) {
-                            console.error(chalk.red('Error al solicitar el código de emparejamiento:', error));
-                            return;
-                        }
-                    }
-                }
-
-                return { kim, store };
-
+            if (!/^[1-2]$/.test(opcion)) {
+                console.log(chalk.bold.cyanBright(`🌻  һᥱᥡᥡᥡᥡ 🌻  ٩(๑꒦ິȏ꒦ິ๑)۶ \n\n${chalk.bold.redBright(`🌸  ᥒ᥆ sᥱ ⍴ᥱrmі𝗍ᥱᥒ mᥲ́s ᥒᥙmᥱr᥆s᥆s ᥲ⍴ᥲr𝗍ᥱ ძᥱ ${chalk.bold.greenBright("➊")} ᥆ ${chalk.bold.greenBright("➋")} 🌸\n🌼  𝗍ᥲm⍴᥆ᥴ᥆ ᥣᥱ𝗍rᥲs ᥒі sіmᑲ᥆ᥣ᥆s ᥱs⍴ᥱᥴіᥲᥣᥱs. (╥﹏╥) 🌼`)}\n\n${chalk.bold.yellowBright("🪻  ♡ ´･ღ ･`♡ 𝗍і⍴ 🪻 : 🌺  ᥴ᥆⍴іᥲ 𝗍ᥙ ᥒᥙ́mᥱr᥆ ძᥱsძᥱ ᥣᥲ ᥲ⍴⍴\n ძᥱ ᥕһᥲ𝗍sᥲ⍴⍴ ᥡ ⍴ᥱgᥲᥣ᥆ ᥱᥒ ᥣᥲ ᥴ᥆ᥒs᥆ᥣᥲ. 🌺")}`))
             }
+        } while (!/^[1-2]$/.test(opcion));
+        return opcion; // Retorna '1' para QR o '2' para código de 8 dígitos.
+    }
 
-        } catch (error) {
-            console.error(chalk.red('Error en la autenticación:', error));
-            rl.close();
-            return;
-        } }}
-                    
+    // Solicita al usuario su número de teléfono si se elige la conexión por código y no existe sesión.
+    async obtenerNumeroTelefonoParaCodigo(authFileExists) {
+        if (authFileExists) {
+            console.log(chalk.yellow("Archivo de sesión existente. Si el código de pareo falla, elimina la carpeta 'auth' y reintenta."));
+        }
+
+        let addNumber;
+        while (true) {
+            addNumber = await this.question(chalk.bgBlack(chalk.bold.greenBright(`\n  (≡^∇^≡) Por favor, introduce tu número de WhatsApp completo (con código de país).\n\n${chalk.bold.yellowBright("🫐  Por ejemplo (〃∀〃)ゞ🫐\n    ➥ +5211234567890")}\n${chalk.bold.magentaBright('---> ')}`)));
+            addNumber = addNumber.replace(/[^0-9+]/g, ''); // Permite '+' para el código de país.
+
+            if (addNumber.match(/^\+?\d{10,15}$/)) { // Validación básica del formato del número.
+                break;
+            } else {
+                console.log(chalk.bold.redBright("  Por favor, introduce un número de WhatsApp válido con el código de país. (◞ ᜊ ◟ㆀ) "));
+            }
+        }
+        // Es responsabilidad de quien llama a AuthHandler cerrar la instancia 'rl' global cuando ya no se necesite en la aplicación.
+        return addNumber; // Retorna el número de teléfono proporcionado por el usuario.
+    }
+}
