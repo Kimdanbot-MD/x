@@ -86,7 +86,7 @@ export class MessageHandler {
                 chalk.bold.cyanBright(`\n┏━━━━━━━━━━━━━━━━━━━━━━━━┅┅\n┃🏷️  ~${botJid?.split("@")[0] || 'BOT'}`),
                 chalk.bold.yellow(`${global.lenguaje.Bio.fecha || "Fecha:"}`) + chalk.yellow(moment(timestamp * 1000).tz(global.place || 'America/Bogota').format('DD/MM/YY')),
                 chalk.bold.red(`${global.lenguaje.Bio.hora || "Hora:"}`) + chalk.red(moment(timestamp * 1000).tz(global.place || 'America/Bogota').format('HH:mm:ss')),
-                chalk.bold.magenta(`${global.lenguaje.Bio.usuario || "Usuario:"}`) + chalk.magenta(m.pushName) + '  ➜ ', gradient.rainbow(m.sender)),
+                chalk.bold.magenta(`${global.lenguaje.Bio.usuario || "Usuario:"}`) + chalk.magenta(m.pushName) + '  ➜ ', gradient.rainbow(m.sender),
                 m.isGroup ? chalk.bold.yellow(`${global.lenguaje.Bio.grupo || "Grupo:"}`) + chalk.yellow(groupName) + '  ❥ ' : chalk.bold.yellow(`${global.lenguaje.Bio.priv || "Privado:"}`),
                 chalk.bold.cyanBright('\n┃') + chalk.bold.white(`${global.lenguaje.Bio.mensaje || "Mensaje:"}${this.msgs(body)}`) + chalk.bold.cyanBright(`\n┗━━━━━━━━━━━━━━━━━━━━━━━━┅┅\n`));
         }
