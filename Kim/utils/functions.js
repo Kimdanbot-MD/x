@@ -1,4 +1,5 @@
-import {
+import Baileys from '@whiskeysockets/baileys';
+const {
     areJidsSameUser,
     generateWAMessage,
     prepareWAMessageMedia,
@@ -6,8 +7,8 @@ import {
     downloadContentFromMessage,
     makeInMemoryStore,
     jidDecode,
-    proto
-} from '@whiskeysockets/baileys';
+    proto 
+} = Baileys;
 import fs from 'node:fs';
 import fsp from 'node:fs/promises';
 import axios from 'axios';
