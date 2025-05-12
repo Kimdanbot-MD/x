@@ -1,4 +1,4 @@
-import { getGroupAdmins, isUrl, sleep, generateProfilePicture, parseMention, getRandom } from "../utils/functions.js";
+import { getGroupAdmins, isUrl, sleep, generateProfilePicture, getRandom } from "../utils/functions.js";
 import moment from 'moment-timezone';
 import chalk from "chalk";
 import gradient from 'gradient-string';
