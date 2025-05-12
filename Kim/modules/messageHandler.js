@@ -3,7 +3,6 @@ import moment from 'moment-timezone';
 import chalk from "chalk";
 import gradient from 'gradient-string';
 import { CommandHandler } from "../core/CommandHandler.js";
-import { proto } from "@whiskeysockets/baileys";
 
 function getMessageType(message) {
     if (message.conversation) return 'conversation';
